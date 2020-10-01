@@ -1,0 +1,27 @@
+1601282639251	geckodriver	INFO	Listening on 127.0.0.1:54426
+1601282639286	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "-foreground" "-no-remote" "-profile" "/var/folders/cr/9w5017_s4c3058kgc4407mq80000gn/T/rust_mozprofilef0pZK9"
+console.error: SearchCache: "_readCacheFile: Error reading cache file:" (new Error("", "(unknown module)"))
+1601282645847	Marionette	INFO	Listening on port 54431
+1601282645951	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: resource://gre/modules/URIFixup.jsm, line 271: NS_ERROR_FAILURE: Should pass a non-null uri
+JavaScript error: https://services.ecourts.gov.in/ecourtindia_v4_bilingual/cases/s_orderdate.php?state=D&state_cd=26&dist_cd=8, line 609: TypeError: parent.document.getElementById(...) is null
+JavaScript error: https://services.ecourts.gov.in/ecourtindia_v4_bilingual/cases/s_orderdate.php?state=D&state_cd=26&dist_cd=8, line 638: TypeError: parent.document.getElementById(...) is null
+JavaScript error: https://services.ecourts.gov.in/ecourtindia_v4_bilingual/cases/s_orderdate.php?state=D&state_cd=26&dist_cd=8, line 1: ReferenceError: funCourtEstChange is not defined
+JavaScript error: https://services.ecourts.gov.in/ecourtindia_v4_bilingual/cases/s_orderdate.php?state=D&state_cd=26&dist_cd=8, line 1: ReferenceError: clearCaptchaText is not defined
+JavaScript error: https://services.ecourts.gov.in/ecourtindia_v4_bilingual/cases/s_orderdate.php?state=D&state_cd=26&dist_cd=8, line 1: ReferenceError: clearCaptchaText is not defined
+JavaScript error: https://services.ecourts.gov.in/ecourtindia_v4_bilingual/cases/s_orderdate.php?state=D&state_cd=26&dist_cd=8, line 1: ReferenceError: clearCaptchaText is not defined
+JavaScript error: https://services.ecourts.gov.in/ecourtindia_v4_bilingual/cases/s_orderdate.php?state=D&state_cd=26&dist_cd=8, line 1: ReferenceError: clearCaptchaText is not defined
+JavaScript error: https://services.ecourts.gov.in/ecourtindia_v4_bilingual/cases/s_orderdate.php?state=D&state_cd=26&dist_cd=8, line 1: ReferenceError: clearCaptchaText is not defined
+JavaScript error: https://services.ecourts.gov.in/ecourtindia_v4_bilingual/cases/s_orderdate.php?state=D&state_cd=26&dist_cd=8, line 1: ReferenceError: clearCaptchaText is not defined
+1601282690857	Marionette	INFO	Stopped listening on port 54431
+1601282697783	geckodriver	INFO	Listening on 127.0.0.1:54534
+1601282698802	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "-foreground" "-no-remote" "-profile" "/var/folders/cr/9w5017_s4c3058kgc4407mq80000gn/T/rust_mozprofileURfrxD"
+console.error: SearchCache: "_readCacheFile: Error reading cache file:" (new Error("", "(unknown module)"))
+1601282703210	Marionette	INFO	Listening on port 54541
+1601282703304	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: resource://gre/modules/URIFixup.jsm, line 271: NS_ERROR_FAILURE: Should pass a non-null uri
+JavaScript error: https://services.ecourts.gov.in/ecourtindia_v4_bilingual/cases/s_orderdate.php?state=D&state_cd=26&dist_cd=8, line 609: TypeError: parent.document.getElementById(...) is null
+JavaScript error: https://services.ecourts.gov.in/ecourtindia_v4_bilingual/cases/s_orderdate.php?state=D&state_cd=26&dist_cd=8, line 638: TypeError: parent.document.getElementById(...) is null
+JavaScript error: https://services.ecourts.gov.in/ecourtindia_v4_bilingual/cases/s_orderdate.php?state=D&state_cd=26&dist_cd=8, line 1: ReferenceError: funCourtEstChange is not defined
+JavaScript error: https://services.ecourts.gov.in/ecourtindia_v4_bilingual/cases/s_orderdate.php?state=D&state_cd=26&dist_cd=8, line 1: ReferenceError: clearCaptchaText is not defined
+1601282730234	Marionette	INFO	Stopped listening on port 54541
