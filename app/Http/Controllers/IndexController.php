@@ -44,11 +44,11 @@ class IndexController extends Controller
         return view('shahdra');
     }
 
-    public function nortWestDelhi(){
+    public function northWestDelhi(){
         return view('north-west-delhi');
     }
 
-    public function nortEastDelhi(){
+    public function northEastDelhi(){
         return view('north-east-delhi');
     }
 

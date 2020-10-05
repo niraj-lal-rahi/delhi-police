@@ -81,18 +81,33 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                    Delhi Police
                 </div>
 
                 <div class="links">
-                    <a href="https://laravel.com/docs">Docs</a>
+
+                    <a href="east-delhi" target="_blank">East Delhi</a>
+                    <a href="new-delhi" target="_blank">New Delhi</a>
+
+                    <a href="north-delhi" target="_blank">North Delhi</a>
+                    <a href="south-delhi" target="_blank">South Delhi</a>
+
+                    <a href="west-delhi" target="_blank">West Delhi</a>
+                    <a href="south-west-delhi" target="_blank">South West Delhi</a>
+
+                    <a href="south-east-delhi" target="_blank">South East Delhi</a>
+                    <a href="shahdra" target="_blank">Shahadra</a>
+
+                    <a href="north-east-delhi" target="_blank">North East Delhi</a>
+                    <a href="north-west-delhi" target="_blank">North West Delhi</a>
+                    {{-- <a href="https://laravel.com/docs">Docs</a>
                     <a href="https://laracasts.com">Laracasts</a>
                     <a href="https://laravel-news.com">News</a>
                     <a href="https://blog.laravel.com">Blog</a>
                     <a href="https://nova.laravel.com">Nova</a>
                     <a href="https://forge.laravel.com">Forge</a>
                     <a href="https://vapor.laravel.com">Vapor</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+                    <a href="https://github.com/laravel/laravel">GitHub</a> --}}
                 </div>
             </div>
         </div>

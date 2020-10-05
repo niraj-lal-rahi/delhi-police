@@ -70,12 +70,12 @@ if __name__ =="__main__":
 
         # site_url = "https://services.ecourts.gov.in/ecourtindia_v4_bilingual/cases/s_orderdate.php?state=D&state_cd=26&dist_cd=8"
 
-        # options = FirefoxOptions()
-        # options.add_argument("--headless")
+        options = FirefoxOptions()
+        options.add_argument("--headless")
 
-        # driver = webdriver.Firefox(options=options)
+        driver = webdriver.Firefox(options=options)
 
-        driver = webdriver.Firefox()
+        # driver = webdriver.Firefox()
         driver.implicitly_wait(30)
         driver.maximize_window()
 
