@@ -1149,3 +1149,138 @@ JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't fin
 JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
 JavaScript error: file:///Users/niraj/Downloads/case-monitor-master/assets/js/pages/dashboard.init.js, line 1: ReferenceError: ApexCharts is not defined
 JavaScript error: file:///Users/niraj/Downloads/case-monitor-master/assets/js/pages/dashboard.init.js, line 1: TypeError: $(...).knob is not a function
+JavaScript error: http://127.0.0.1:8000/assets/js/pages/dashboard.init.js, line 1: ReferenceError: ApexCharts is not defined
+JavaScript error: http://127.0.0.1:8000/index, line 338: TypeError: $(...).datepicker is not a function
+JavaScript error: http://127.0.0.1:8000/assets/js/pages/dashboard.init.js, line 1: TypeError: $(...).knob is not a function
+JavaScript error: http://127.0.0.1:8000/assets/js/pages/dashboard.init.js, line 1: ReferenceError: ApexCharts is not defined
+JavaScript error: http://127.0.0.1:8000/index, line 301: TypeError: $(...).datepicker is not a function
+JavaScript error: http://127.0.0.1:8000/assets/js/pages/dashboard.init.js, line 1: TypeError: $(...).knob is not a function
+JavaScript error: http://127.0.0.1:8000/assets/js/pages/dashboard.init.js, line 1: ReferenceError: ApexCharts is not defined
+JavaScript error: http://127.0.0.1:8000/index, line 296: TypeError: $(...).datepicker is not a function
+JavaScript error: http://127.0.0.1:8000/assets/js/pages/dashboard.init.js, line 1: TypeError: $(...).knob is not a function
+JavaScript error: http://127.0.0.1:8000/assets/js/pages/dashboard.init.js, line 1: ReferenceError: ApexCharts is not defined
+JavaScript error: http://127.0.0.1:8000/index, line 297: TypeError: $(...).datepicker is not a function
+JavaScript error: http://127.0.0.1:8000/assets/js/pages/dashboard.init.js, line 1: TypeError: $(...).knob is not a function
+JavaScript error: http://127.0.0.1:8000/assets/js/pages/dashboard.init.js, line 1: ReferenceError: ApexCharts is not defined
+JavaScript error: http://127.0.0.1:8000/index, line 297: TypeError: $(...).datepicker is not a function
+JavaScript error: http://127.0.0.1:8000/assets/js/pages/dashboard.init.js, line 1: TypeError: $(...).knob is not a function
+JavaScript error: http://127.0.0.1:8000/assets/js/pages/dashboard.init.js, line 1: ReferenceError: ApexCharts is not defined
+JavaScript error: http://127.0.0.1:8000/index, line 297: TypeError: $(...).datepicker is not a function
+JavaScript error: http://127.0.0.1:8000/assets/js/pages/dashboard.init.js, line 1: TypeError: $(...).knob is not a function
+JavaScript error: http://127.0.0.1:8000/assets/js/pages/dashboard.init.js, line 1: ReferenceError: ApexCharts is not defined
+JavaScript error: http://127.0.0.1:8000/index, line 296: TypeError: $(...).datepicker is not a function
+JavaScript error: http://127.0.0.1:8000/assets/js/pages/dashboard.init.js, line 1: TypeError: $(...).knob is not a function
+JavaScript error: http://127.0.0.1:8000/index, line 290: ReferenceError: $ is not defined
+JavaScript error: http://127.0.0.1:8000/index, line 412: ReferenceError: $ is not defined
+JavaScript error: http://127.0.0.1:8000/assets/js/pages/dashboard.init.js, line 1: ReferenceError: ApexCharts is not defined
+JavaScript error: http://127.0.0.1:8000/assets/js/pages/dashboard.init.js, line 1: TypeError: $(...).knob is not a function
+JavaScript error: http://127.0.0.1:8000/assets/js/pages/dashboard.init.js, line 1: ReferenceError: ApexCharts is not defined
+JavaScript error: http://127.0.0.1:8000/assets/js/pages/dashboard.init.js, line 1: TypeError: $(...).knob is not a function
+JavaScript error: http://127.0.0.1:8000/index, line 454: TypeError: $(...).datepicker is not a function
+JavaScript error: http://127.0.0.1:8000/index, line 460: TypeError: $(...).datepicker is not a function
+JavaScript error: http://127.0.0.1:8000/assets/js/pages/dashboard.init.js, line 1: ReferenceError: ApexCharts is not defined
+JavaScript error: http://127.0.0.1:8000/assets/js/pages/dashboard.init.js, line 1: TypeError: $(...).knob is not a function
+JavaScript error: file:///Users/niraj/Downloads/case-monitor-master/assets/js/pages/dashboard.init.js, line 1: ReferenceError: ApexCharts is not defined
+JavaScript error: file:///Users/niraj/Downloads/case-monitor-master/assets/js/pages/dashboard.init.js, line 1: TypeError: $(...).knob is not a function
+JavaScript error: http://127.0.0.1:8000/assets/js/pages/dashboard.init.js, line 1: ReferenceError: ApexCharts is not defined
+JavaScript error: http://127.0.0.1:8000/assets/js/pages/dashboard.init.js, line 1: TypeError: $(...).knob is not a function
+JavaScript error: http://127.0.0.1:8000/assets/js/pages/dashboard.init.js, line 1: ReferenceError: ApexCharts is not defined
+JavaScript error: http://127.0.0.1:8000/assets/js/pages/dashboard.init.js, line 1: TypeError: $(...).knob is not a function
+JavaScript error: http://127.0.0.1:8000/assets/js/pages/dashboard.init.js, line 1: ReferenceError: ApexCharts is not defined
+JavaScript error: http://127.0.0.1:8000/assets/js/pages/dashboard.init.js, line 1: TypeError: $(...).knob is not a function
+JavaScript error: http://127.0.0.1:8000/assets/js/pages/dashboard.init.js, line 1: ReferenceError: ApexCharts is not defined
+JavaScript error: http://127.0.0.1:8000/assets/js/pages/dashboard.init.js, line 1: TypeError: $(...).knob is not a function
+JavaScript error: file:///Users/niraj/Downloads/case-monitor-master/assets/js/pages/dashboard.init.js, line 1: ReferenceError: ApexCharts is not defined
+JavaScript error: file:///Users/niraj/Downloads/case-monitor-master/assets/js/pages/dashboard.init.js, line 1: TypeError: $(...).knob is not a function
+JavaScript error: http://127.0.0.1:8000/assets/js/pages/dashboard.init.js, line 1: ReferenceError: ApexCharts is not defined
+JavaScript error: http://127.0.0.1:8000/assets/js/pages/dashboard.init.js, line 1: TypeError: $(...).knob is not a function
+JavaScript error: http://127.0.0.1:8000/assets/js/pages/dashboard.init.js, line 1: ReferenceError: ApexCharts is not defined
+JavaScript error: http://127.0.0.1:8000/assets/js/pages/dashboard.init.js, line 1: TypeError: $(...).knob is not a function
+JavaScript error: http://127.0.0.1:8000/assets/js/pages/dashboard.init.js, line 1: ReferenceError: ApexCharts is not defined
+JavaScript error: http://127.0.0.1:8000/assets/js/pages/dashboard.init.js, line 1: TypeError: $(...).knob is not a function
+JavaScript error: http://127.0.0.1:8000/assets/js/pages/dashboard.init.js, line 1: ReferenceError: ApexCharts is not defined
+JavaScript error: http://127.0.0.1:8000/assets/js/pages/dashboard.init.js, line 1: TypeError: $(...).knob is not a function
+JavaScript error: http://127.0.0.1:8000/assets/js/pages/dashboard.init.js, line 1: ReferenceError: ApexCharts is not defined
+JavaScript error: http://127.0.0.1:8000/assets/js/pages/dashboard.init.js, line 1: TypeError: $(...).knob is not a function
+JavaScript error: http://127.0.0.1:8000/assets/js/pages/dashboard.init.js, line 1: ReferenceError: ApexCharts is not defined
+JavaScript error: http://127.0.0.1:8000/assets/js/pages/dashboard.init.js, line 1: TypeError: $(...).knob is not a function
+JavaScript error: http://127.0.0.1:8000/assets/js/pages/dashboard.init.js, line 1: ReferenceError: ApexCharts is not defined
+JavaScript error: http://127.0.0.1:8000/assets/js/pages/dashboard.init.js, line 1: TypeError: $(...).knob is not a function
+JavaScript error: http://127.0.0.1:8000/assets/js/pages/dashboard.init.js, line 1: ReferenceError: ApexCharts is not defined
+JavaScript error: http://127.0.0.1:8000/assets/js/pages/dashboard.init.js, line 1: TypeError: $(...).knob is not a function
+JavaScript error: http://127.0.0.1:8000/assets/js/pages/dashboard.init.js, line 1: ReferenceError: ApexCharts is not defined
+JavaScript error: http://127.0.0.1:8000/assets/js/pages/dashboard.init.js, line 1: TypeError: $(...).knob is not a function
+JavaScript error: http://127.0.0.1:8000/assets/js/pages/dashboard.init.js, line 1: ReferenceError: ApexCharts is not defined
+JavaScript error: http://127.0.0.1:8000/assets/js/pages/dashboard.init.js, line 1: TypeError: $(...).knob is not a function
+JavaScript error: http://127.0.0.1:8000/assets/js/pages/dashboard.init.js, line 1: ReferenceError: ApexCharts is not defined
+JavaScript error: http://127.0.0.1:8000/assets/js/pages/dashboard.init.js, line 1: TypeError: $(...).knob is not a function
+JavaScript error: http://127.0.0.1:8000/assets/js/pages/dashboard.init.js, line 1: ReferenceError: ApexCharts is not defined
+JavaScript error: http://127.0.0.1:8000/assets/js/pages/dashboard.init.js, line 1: TypeError: $(...).knob is not a function
+JavaScript error: http://127.0.0.1:8000/assets/js/pages/dashboard.init.js, line 1: ReferenceError: ApexCharts is not defined
+JavaScript error: http://127.0.0.1:8000/assets/js/pages/dashboard.init.js, line 1: TypeError: $(...).knob is not a function
+JavaScript error: http://127.0.0.1:8000/assets/js/pages/dashboard.init.js, line 1: ReferenceError: ApexCharts is not defined
+JavaScript error: http://127.0.0.1:8000/assets/js/pages/dashboard.init.js, line 1: TypeError: $(...).knob is not a function
+JavaScript error: http://127.0.0.1:8000/assets/js/pages/dashboard.init.js, line 1: ReferenceError: ApexCharts is not defined
+JavaScript error: http://127.0.0.1:8000/assets/js/pages/dashboard.init.js, line 1: TypeError: $(...).knob is not a function
+JavaScript warning: http://127.0.0.1:8000/assets/libs/jquery/jquery.min.js, line 2: Script terminated by timeout at:
+trigger@http://127.0.0.1:8000/assets/libs/jquery/jquery.min.js:2:70501
+simulate@http://127.0.0.1:8000/assets/libs/jquery/jquery.min.js:2:71130
+i@http://127.0.0.1:8000/assets/libs/jquery/jquery.min.js:2:71419
+
+JavaScript error: http://127.0.0.1:8000/assets/js/pages/dashboard.init.js, line 1: ReferenceError: ApexCharts is not defined
+JavaScript error: http://127.0.0.1:8000/assets/js/pages/dashboard.init.js, line 1: TypeError: $(...).knob is not a function
+JavaScript error: http://127.0.0.1:8000/assets/js/pages/dashboard.init.js, line 1: ReferenceError: ApexCharts is not defined
+JavaScript error: http://127.0.0.1:8000/assets/js/pages/dashboard.init.js, line 1: TypeError: $(...).knob is not a function
+JavaScript error: http://127.0.0.1:8000/assets/js/pages/dashboard.init.js, line 1: ReferenceError: ApexCharts is not defined
+JavaScript error: http://127.0.0.1:8000/assets/js/pages/dashboard.init.js, line 1: TypeError: $(...).knob is not a function
+JavaScript error: http://127.0.0.1:8000/assets/js/pages/dashboard.init.js, line 1: ReferenceError: ApexCharts is not defined
+JavaScript error: http://127.0.0.1:8000/assets/js/pages/dashboard.init.js, line 1: TypeError: $(...).knob is not a function
+JavaScript error: http://127.0.0.1:8000/assets/js/pages/dashboard.init.js, line 1: ReferenceError: ApexCharts is not defined
+JavaScript error: http://127.0.0.1:8000/assets/js/pages/dashboard.init.js, line 1: TypeError: $(...).knob is not a function
+JavaScript error: http://127.0.0.1:8000/assets/js/pages/dashboard.init.js, line 1: ReferenceError: ApexCharts is not defined
+JavaScript error: http://127.0.0.1:8000/assets/js/pages/dashboard.init.js, line 1: TypeError: $(...).knob is not a function
+JavaScript error: http://127.0.0.1:8000/assets/js/pages/dashboard.init.js, line 1: ReferenceError: ApexCharts is not defined
+JavaScript error: http://127.0.0.1:8000/assets/js/pages/dashboard.init.js, line 1: TypeError: $(...).knob is not a function
+JavaScript error: http://127.0.0.1:8000/assets/js/pages/dashboard.init.js, line 1: ReferenceError: ApexCharts is not defined
+JavaScript error: http://127.0.0.1:8000/assets/js/pages/dashboard.init.js, line 1: TypeError: $(...).knob is not a function
+JavaScript warning: http://127.0.0.1:8000/assets/libs/jquery/jquery.min.js, line 2: Script terminated by timeout at:
+dispatch@http://127.0.0.1:8000/assets/libs/jquery/jquery.min.js:2:42124
+add/v.handle@http://127.0.0.1:8000/assets/libs/jquery/jquery.min.js:2:40572
+trigger@http://127.0.0.1:8000/assets/libs/jquery/jquery.min.js:2:70627
+simulate@http://127.0.0.1:8000/assets/libs/jquery/jquery.min.js:2:71130
+i@http://127.0.0.1:8000/assets/libs/jquery/jquery.min.js:2:71419
+
+JavaScript error: http://127.0.0.1:8000/assets/js/pages/dashboard.init.js, line 1: ReferenceError: ApexCharts is not defined
+JavaScript error: http://127.0.0.1:8000/assets/js/pages/dashboard.init.js, line 1: TypeError: $(...).knob is not a function
+JavaScript error: http://127.0.0.1:8000/assets/js/pages/dashboard.init.js, line 1: ReferenceError: ApexCharts is not defined
+JavaScript error: http://127.0.0.1:8000/assets/js/pages/dashboard.init.js, line 1: TypeError: $(...).knob is not a function
+JavaScript error: http://127.0.0.1:8000/assets/js/pages/dashboard.init.js, line 1: ReferenceError: ApexCharts is not defined
+JavaScript error: http://127.0.0.1:8000/assets/js/pages/dashboard.init.js, line 1: TypeError: $(...).knob is not a function
+JavaScript error: http://127.0.0.1:8000/assets/js/pages/dashboard.init.js, line 1: ReferenceError: ApexCharts is not defined
+JavaScript error: http://127.0.0.1:8000/assets/js/pages/dashboard.init.js, line 1: TypeError: $(...).knob is not a function
+JavaScript error: http://127.0.0.1:8000/assets/js/pages/dashboard.init.js, line 1: ReferenceError: ApexCharts is not defined
+JavaScript error: http://127.0.0.1:8000/assets/js/pages/dashboard.init.js, line 1: TypeError: $(...).knob is not a function
+JavaScript error: http://127.0.0.1:8000/assets/js/pages/dashboard.init.js, line 1: ReferenceError: ApexCharts is not defined
+JavaScript error: http://127.0.0.1:8000/assets/js/pages/dashboard.init.js, line 1: TypeError: $(...).knob is not a function
+JavaScript error: http://127.0.0.1:8000/assets/js/pages/dashboard.init.js, line 1: ReferenceError: ApexCharts is not defined
+JavaScript error: http://127.0.0.1:8000/assets/js/pages/dashboard.init.js, line 1: TypeError: $(...).knob is not a function
+JavaScript error: http://127.0.0.1:8000/assets/js/pages/dashboard.init.js, line 1: ReferenceError: ApexCharts is not defined
+JavaScript error: http://127.0.0.1:8000/assets/js/pages/dashboard.init.js, line 1: TypeError: $(...).knob is not a function
+JavaScript error: http://127.0.0.1:8000/assets/js/pages/dashboard.init.js, line 1: ReferenceError: ApexCharts is not defined
+JavaScript error: http://127.0.0.1:8000/assets/js/pages/dashboard.init.js, line 1: TypeError: $(...).knob is not a function
+JavaScript error: http://127.0.0.1:8000/assets/js/pages/dashboard.init.js, line 1: ReferenceError: ApexCharts is not defined
+JavaScript error: http://127.0.0.1:8000/assets/js/pages/dashboard.init.js, line 1: TypeError: $(...).knob is not a function
+JavaScript error: http://127.0.0.1:8000/assets/js/pages/dashboard.init.js, line 1: ReferenceError: ApexCharts is not defined
+JavaScript error: http://127.0.0.1:8000/assets/js/pages/dashboard.init.js, line 1: TypeError: $(...).knob is not a function
+JavaScript error: http://127.0.0.1:8000/assets/js/pages/dashboard.init.js, line 1: ReferenceError: ApexCharts is not defined
+JavaScript error: http://127.0.0.1:8000/assets/js/pages/dashboard.init.js, line 1: TypeError: $(...).knob is not a function
+JavaScript error: http://127.0.0.1:8000/assets/js/pages/dashboard.init.js, line 1: ReferenceError: ApexCharts is not defined
+JavaScript error: http://127.0.0.1:8000/assets/js/pages/dashboard.init.js, line 1: TypeError: $(...).knob is not a function
+JavaScript error: http://127.0.0.1:8000/assets/js/pages/dashboard.init.js, line 1: ReferenceError: ApexCharts is not defined
+JavaScript error: http://127.0.0.1:8000/assets/js/pages/dashboard.init.js, line 1: TypeError: $(...).knob is not a function
+JavaScript error: http://127.0.0.1:8000/assets/js/pages/dashboard.init.js, line 1: ReferenceError: ApexCharts is not defined
+JavaScript error: http://127.0.0.1:8000/assets/js/pages/dashboard.init.js, line 1: TypeError: $(...).knob is not a function
+JavaScript error: http://127.0.0.1:8000/assets/js/pages/dashboard.init.js, line 1: ReferenceError: ApexCharts is not defined
+JavaScript error: http://127.0.0.1:8000/assets/js/pages/dashboard.init.js, line 1: TypeError: $(...).knob is not a function
+JavaScript error: http://127.0.0.1:8000/assets/js/pages/dashboard.init.js, line 1: ReferenceError: ApexCharts is not defined
+JavaScript error: http://127.0.0.1:8000/assets/js/pages/dashboard.init.js, line 1: TypeError: $(...).knob is not a function

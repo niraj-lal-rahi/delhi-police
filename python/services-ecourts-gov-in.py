@@ -44,7 +44,7 @@ def download_page_from_child_link():
     webobj.click()
     #Click the OK button and close
     time.sleep(5)
-    allGUID = driver.window_handles
+    # allGUID = driver.window_handles
 
     # print(allGUID)
     pyautogui.press('enter')
