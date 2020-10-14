@@ -46,12 +46,12 @@ def download_page_from_child_link():
     time.sleep(5)
     allGUID = driver.window_handles
 
-    print(allGUID)
+    # print(allGUID)
     pyautogui.press('enter')
     # time.sleep(2)
     # webobj.send_keys(Keys.RETURN)
 
-    time.sleep(10)
+    time.sleep(2)
     driver.close()
 
     #Restore the handle back to parent handle
@@ -202,6 +202,8 @@ if __name__ =="__main__":
 
             for link in output.find_elements_by_tag_name('a') :
                 link.click()
+                # href = link.get_attribute('href')
+                # driver.execute_script("window.open('"+href+"')")
                 # time.sleep(5)
                 # href = link.get_attribute('href')
                 # driver.execute_script('window.open(arguments[0]);', href)
@@ -224,7 +226,7 @@ if __name__ =="__main__":
 
                 # driver.find_element_by_tag_name('body').send_keys(Keys.CONTROL + 'w')
                 # driver.switch_to.window(main_window)
-                break
+
 
 
             # print(links)
