@@ -30,3 +30,6 @@ Route::get('south-east-delhi','IndexController@southEastDelhi');
 Route::get('shahdra','IndexController@shahdra');
 Route::get('north-west-delhi','IndexController@northWestDelhi');
 Route::get('north-east-delhi','IndexController@northEastDelhi');
+
+
+Route::get('pdf-generator','PdfController@index');
