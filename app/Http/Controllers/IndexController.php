@@ -80,16 +80,16 @@ class IndexController extends Controller
 
 
              // $process = new Process(['python3.6', base_path('python/supreme.py'),'-id',$create->id]);
-             $process = new Process(['python3', base_path('python/services-ecourts-gov-in.py'),'-id',$create->id]);
-             $process->run();
+            //  $process = new Process(['python3', base_path('python/services-ecourts-gov-in.py'),'-id',$create->id]);
+            //  $process->run();
 
-             if (!$process->isSuccessful()) {
-                 throw new ProcessFailedException($process);
-             }
+            //  if (!$process->isSuccessful()) {
+            //      throw new ProcessFailedException($process);
+            //  }
 
-             echo $process->getOutput();
+            //  echo $process->getOutput();
 
-            // return redirect()->back()->withSuccess("Hold tight we are fetching data.");
+            return redirect()->back()->withSuccess("Hold tight we are fetching data. #ID -> ".$create->id);
 
 
         }catch(\Exception $exception){

@@ -10,8 +10,6 @@ import time
 from selenium.webdriver.firefox.options import Options as FirefoxOptions
 import mysql.connector
 import argparse
-from bs4 import BeautifulSoup
-import requests
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.action_chains import ActionChains
 import pyautogui

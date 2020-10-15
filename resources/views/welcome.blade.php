@@ -1,115 +1,96 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends('layout.header')
+@section('container')
 
-        <title>Laravel</title>
 
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
 
-        <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Nunito', sans-serif;
-                font-weight: 200;
-                height: 100vh;
-                margin: 0;
-            }
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
 
-            .full-height {
-                height: 100vh;
-            }
 
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
+<!-- ============================================================== -->
+    <!-- Start right Content here -->
+<!-- ============================================================== -->
+<div class="main-content">
 
-            .position-ref {
-                position: relative;
-            }
+    <div class="page-content">
 
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-
-            .content {
-                text-align: center;
-            }
-
-            .title {
-                font-size: 84px;
-            }
-
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 13px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
-
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Register</a>
-                        @endif
-                    @endauth
-                </div>
-            @endif
-
-            <div class="content">
-                <div class="title m-b-md">
-                    Delhi Police
+        <!-- Page-Title -->
+        <div class="page-title-box">
+            <div class="container-fluid">
+                <div class="row align-items-center">
+                    <div class="col-md-8">
+                        <h4 class="page-title mb-1">Select your court</h4>
+                        <!-- <ol class="breadcrumb m-0">
+                            <li class="breadcrumb-item"><a href="javascript: void(0);">Select your court</a></li>
+                         <li class="breadcrumb-item active">Search by Order Date</li>
+                        </ol> -->
+                    </div>
+                    <div class="col-md-4">
+                        <div class="float-right d-none d-md-block">
+                            <div class="dropdown">
+                                <button class="btn btn-light btn-rounded dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="mdi mdi-settings-outline mr-1"></i> Settings
+                                </button>
+                                <div class="dropdown-menu dropdown-menu-right dropdown-menu-animated">
+                                    <a class="dropdown-item" href="#">Action</a>
+                                    <a class="dropdown-item" href="#">Another action</a>
+                                    <a class="dropdown-item" href="#">Something else here</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="#">Separated link</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="links">
-
-                    <a href="east-delhi" target="_blank">East Delhi</a>
-                    <a href="new-delhi" target="_blank">New Delhi</a>
-
-                    <a href="north-delhi" target="_blank">North Delhi</a>
-                    <a href="south-delhi" target="_blank">South Delhi</a>
-
-                    <a href="west-delhi" target="_blank">West Delhi</a>
-                    <a href="south-west-delhi" target="_blank">South West Delhi</a>
-
-                    <a href="south-east-delhi" target="_blank">South East Delhi</a>
-                    <a href="shahdra" target="_blank">Shahadra</a>
-
-                    <a href="north-east-delhi" target="_blank">North East Delhi</a>
-                    <a href="north-west-delhi" target="_blank">North West Delhi</a>
-                    {{-- <a href="https://laravel.com/docs">Docs</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://blog.laravel.com">Blog</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://vapor.laravel.com">Vapor</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a> --}}
-                </div>
             </div>
         </div>
-    </body>
-</html>
+        <!-- end page title end breadcrumb -->
+
+        <div class="page-content-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                @if(session('errors'))
+                <div class="alert alert-danger" role="alert">
+                    {{session('errors')}}
+                </div>
+                @endif
+
+                <div class="links">
+              
+              
+              
+                    <ol>
+                    
+                    
+                    <li><a href="east-delhi" target="_blank">East Delhi</a></li>
+                    <li><a href="new-delhi" target="_blank">New Delhi</a></li>
+
+                    <li><a href="north-delhi" target="_blank">North Delhi</a></li>
+                    <li><a href="south-delhi" target="_blank">South Delhi</a></li>
+
+                    <li><a href="west-delhi" target="_blank">West Delhi</a></li>
+                    <li><a href="south-west-delhi" target="_blank">South West Delhi</a></li>
+
+                    <li><a href="south-east-delhi" target="_blank">South East Delhi</a></li>
+                    <li><a href="shahdra" target="_blank">Shahadra</a></li>
+
+                    <li><a href="north-east-delhi" target="_blank">North East Delhi</a></li>
+                    <li><a href="north-west-delhi" target="_blank">North West Delhi</a></li>
+                    
+                    
+                    </ol>               
+              
+              
+              
+                </div>
+                </div>
+</div>
+</div>
+<!-- end col -->
+</div>
+
+@endsection
