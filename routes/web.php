@@ -33,3 +33,5 @@ Route::get('north-east-delhi','IndexController@northEastDelhi');
 
 
 Route::get('pdf-generator','PdfController@index');
+
+Route::get('data/{id}','IndexController@show');

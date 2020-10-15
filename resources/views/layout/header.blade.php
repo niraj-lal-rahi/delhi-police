@@ -7,15 +7,16 @@
         <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
         <meta content="Themesdesign" name="author" />
         <!-- App favicon -->
-        <link rel="shortcut icon" href="assets/images/lq-logo-m.png">
+        <link rel="shortcut icon" href="{{ asset('assets/images/lq-logo-m.png')}}">
 
         <!-- Bootstrap Css -->
-        <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <link href="{{asset('assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
         <!-- Icons Css -->
-        <link href="assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+        <link href="{{asset('assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
         <!-- App Css-->
-        <link href="assets/css/app.min.css" rel="stylesheet" type="text/css" />
-        <link href="assets/css/style.css" rel="stylesheet" type="text/css" />
+        <link href="{{asset('assets/css/app.min.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{asset('assets/css/style.css') }}" rel="stylesheet" type="text/css" />
+        <link href="//cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />
     </head>
     <body data-topbar="colored">
 
@@ -29,19 +30,19 @@
                         <div class="navbar-brand-box">
                             <a href="index.html" class="logo logo-dark text-left">
                                 <span class="logo-sm">
-                                    <img src="assets/images/lq-logo-m.png" alt="" height="30">
+                                    <img src="{{ asset('assets/images/lq-logo-m.png')}}" alt="" height="30">
                                 </span>
                                 <span class="logo-lg">
-                                    <img src="assets/images/lq-logo.png" alt="" height="35">
+                                    <img src="{{ asset('assets/images/lq-logo.png')}}" alt="" height="35">
                                 </span>
                             </a>
 
                             <a href="index.html" class="logo logo-light">
                                 <span class="logo-sm">
-                                    <img src="assets/images/logo-sm-light.png" alt="" height="22">
+                                    <img src="{{ asset('assets/images/logo-sm-light.png')}}" alt="" height="22">
                                 </span>
                                 <span class="logo-lg">
-                                    <img src="assets/images/logo-light.png" alt="" height="20">
+                                    <img src="{{ asset('assets/images/logo-light.png')}}" alt="" height="20">
                                 </span>
                             </a>
                         </div>
@@ -126,7 +127,7 @@
 
                         <div class="dropdown d-inline-block">
                             <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <img class="rounded-circle header-profile-user" src="assets/images/users/avatar-1.jpg" alt="Header Avatar">
+                                <img class="rounded-circle header-profile-user" src="{{ asset('assets/images/users/avatar-1.jpg')}}" alt="Header Avatar">
                                 <span class="d-none d-sm-inline-block ml-1">Smith</span>
                                 <i class="mdi mdi-chevron-down d-none d-sm-inline-block"></i>
                             </button>
@@ -172,17 +173,17 @@
 
 
             <!-- JAVASCRIPT -->
-            <script src="assets/libs/jquery/jquery.min.js"></script>
-            <script src="assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
-            <script src="assets/libs/metismenu/metisMenu.min.js"></script>
-            <script src="assets/libs/simplebar/simplebar.min.js"></script>
-            <script src="assets/libs/node-waves/waves.min.js"></script>
+            <script src="{{asset('assets/libs/jquery/jquery.min.js')}}"></script>
+            <script src="{{asset('assets/libs/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+            <script src="{{asset('assets/libs/metismenu/metisMenu.min.js')}}"></script>
+            <script src="{{asset('assets/libs/simplebar/simplebar.min.js')}}"></script>
+            <script src="{{asset('assets/libs/node-waves/waves.min.js')}}"></script>
 
-            <script src="./assets/js/pages/bundle.js"></script>
+            <script src="{{asset('assets/js/pages/bundle.js')}}"></script>
 
-            <script src="assets/js/pages/dashboard.init.js"></script>
+            <script src="{{asset('assets/js/pages/dashboard.init.js')}}"></script>
 
-            <script src="assets/js/app.js"></script>
+            <script src="{{asset('assets/js/app.js')}}"></script>
 
             @yield('script')
         </div>

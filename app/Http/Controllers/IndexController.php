@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Symfony\Component\Process\Process;
 use Symfony\Component\Process\Exception\ProcessFailedException;
+use App\CourtOrders;
 
 class IndexController extends Controller
 {
@@ -91,6 +92,18 @@ class IndexController extends Controller
 
             // return redirect()->back()->withSuccess("Hold tight we are fetching data.");
 
+
+        }catch(\Exception $exception){
+            return redirect()->back()->withErrors($exception->getMessage());
+        }
+    }
+
+    public function show($id,CourtOrders $courtOrders,Request $request){
+        try{
+
+
+            $courtOrders = $courtOrders->findOrFail($id);
+            return view('display',compact('courtOrders'));
 
         }catch(\Exception $exception){
             return redirect()->back()->withErrors($exception->getMessage());
