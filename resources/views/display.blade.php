@@ -72,8 +72,11 @@
 <script>
 
 $(document).ready(function(){
+    $("#showList3").children('tbody').children('tr:first').hide();
+
     $('#showList3').addClass('table table-centered table-hover mb-0');
     $('#showList3').DataTable();
+
 })
 
 </script>

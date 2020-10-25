@@ -10,10 +10,10 @@ import time
 from selenium.webdriver.firefox.options import Options as FirefoxOptions
 import mysql.connector
 import argparse
-from bs4 import BeautifulSoup
-import requests
 from selenium.webdriver.common.keys import Keys
-
+from selenium.webdriver.common.action_chains import ActionChains
+import pyautogui
+from keyboard import press
 
 def get_captcha_text(location, size):
     # pytesseract.pytesseract.tesseract_cmd = 'path/to/pytesseract'
@@ -24,7 +24,6 @@ def get_captcha_text(location, size):
     bottom = location['y'] + size['height']
     im = im.crop((left, top, right, bottom)) # defines crop points
     im.save('screenshot.png')
-    # response = requests.get("http://main.sci.gov.in/php/captcha.php")
     captcha_text = image_to_string(Image.open('screenshot.png'))
     return captcha_text
 
@@ -39,14 +38,20 @@ def get_captcha_image(driver):
     return get_captcha_text(location,size)
 
 def download_page_from_child_link():
+    time.sleep(2)
     webobj = driver.find_element_by_id("download")
     webobj.click()
     #Click the OK button and close
+    time.sleep(5)
+    # allGUID = driver.window_handles
+    # press('enter')
+    # print(allGUID)
+    pyautogui.press('enter')
 
-    time.sleep(2)
+    # time.sleep(2)
     # webobj.send_keys(Keys.RETURN)
 
-    time.sleep(10)
+    time.sleep(2)
     driver.close()
 
     #Restore the handle back to parent handle
@@ -57,36 +62,61 @@ if __name__ =="__main__":
 
     try :
 
+        parser = argparse.ArgumentParser(description='Short sample app')
+        parser.add_argument('-id','--id', required=True,  type=int)
 
-        #Setting the profile
-        fp = webdriver.FirefoxProfile()
-        fp.set_preference("browser.download.folderList", 2)
-        fp.set_preference("browser.download.manager.showWhenStarting", False)
-        fp.set_preference("browser.helperApps.neverAsk.openFile","application/pdf,application/x-pdf,application/download, application/octet-stream")
-        fp.set_preference("browser.download.dir", "/Users/niraj/Downloads/")
-        fp.set_preference("browser.helperApps.neverAsk.saveToDisk", "application/pdf,application/x-pdf")
-        fp.set_preference("pdfjs.disabled", "true")
-        # fp.set_preference("plugin.disable_full_page_plugin_for_types", "application/pdf,application/vnd.adobe.xfdf,application/vnd.fdf,application/vnd.adobe.xdp+xml")
+        args = vars(parser.parse_args())
+        # database connection
 
-        # fp.set_preference("browser.helperApps.alwaysAsk.force", False)
-        # fp.set_preference("browser.download.manager.useWindow", False)
+        config = {
+            'user': 'root',
+                'password': '12345',
+                    'unix_socket': '/var/run/mysqld/mysqld.sock', #show variables like 'socket';
+                        'database': 'delhi_police',
+                            'raise_on_warnings': True,
+        }
 
-        # fp.set_preference("browser.download.manager.alertOnEXEOpen", False)
-        # fp.set_preference("browser.download.manager.closeWhenDone", False)
-        # fp.set_preference("browser.download.manager.showAlertOnComplete", False)
-        # fp.set_preference("browser.download.manager.focusWhenStarting", False)
+        mydb = mysql.connector.connect(**config)
 
-        driver = webdriver.Firefox(firefox_profile = fp)
+        mycursor = mydb.cursor()
 
+        sqlSelect = "SELECT url, court_type, court_complex, from_date, to_date FROM court_orders WHERE id="+str(args['id'])
+        mycursor.execute(sqlSelect)
+
+        myresult = mycursor.fetchone()
+
+        site_url = myresult[0]
+        court_type = myresult[1]
+        court_complex = myresult[2]
+        from_date = myresult[3]
+        to_date = myresult[4]
+
+
+        # mime_types = "application/pdf,application/vnd.adobe.xfdf,application/vnd.fdf,application/vnd.adobe.xdp+xml"
+
+        # fp = webdriver.FirefoxProfile()
+        # # fp.set_preference("browser.download.folderList", 2) #for custom path keep it commented for default path
+        # fp.set_preference("browser.download.manager.showWhenStarting", False)
+        # # fp.set_preference("browser.download.dir", "/home") #custom path define
+        # fp.set_preference("browser.helperApps.neverAsk.saveToDisk", mime_types)
+        # fp.set_preference("plugin.disable_full_page_plugin_for_types", mime_types)
+        # fp.set_preference("pdfjs.disabled", True)
+
+        # driver = webdriver.Firefox(firefox_profile=fp)
+        options = FirefoxOptions()
+        options.add_argument("--headless")
+
+        driver = webdriver.Firefox(options=options)
         # driver = webdriver.Firefox()
         driver.implicitly_wait(30)
         driver.maximize_window()
 
-        driver.get("https://www.citysdk.eu/wp-content/uploads/2013/09/DELIVERABLE_WP4_TA_SRS_0.21.pdf")
+        driver.get(site_url)
         WebDriverWait(driver, 10).until(lambda d: d.execute_script('return document.readyState') == 'complete')
 
         # enter static value
-
+        parentGUID = driver.current_window_handle
+        print(parentGUID)
         # choose radio button for the court type
         if court_type == '1':
             driver.find_element_by_id('radCourtComplex').click()
@@ -147,9 +177,6 @@ if __name__ =="__main__":
             else :
                 previous = i
 
-
-
-
         if i < 10 :
             time.sleep(10)
             j=0
@@ -179,11 +206,16 @@ if __name__ =="__main__":
 
             for link in output.find_elements_by_tag_name('a') :
                 link.click()
+                # href = link.get_attribute('href')
+                # driver.execute_script("window.open('"+href+"')")
+                # time.sleep(5)
+                # href = link.get_attribute('href')
+                # driver.execute_script('window.open(arguments[0]);', href)
+                # ActionChains(driver).key_down(Keys.ALT).click(link).key_up(Keys.ALT).perform()
                 time.sleep(5)
-
                 driver.switch_to.window(driver.window_handles[1])
                 download_page_from_child_link()
-                time.sleep(5)
+                # time.sleep(5)
                 # main_window = driver.current_window_handle
 
 
@@ -198,7 +230,7 @@ if __name__ =="__main__":
 
                 # driver.find_element_by_tag_name('body').send_keys(Keys.CONTROL + 'w')
                 # driver.switch_to.window(main_window)
-                break
+
 
 
             # print(links)
