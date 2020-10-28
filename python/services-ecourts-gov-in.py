@@ -13,7 +13,9 @@ import argparse
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.action_chains import ActionChains
 import pyautogui
-from keyboard import press
+import requests
+
+
 
 def get_captcha_text(location, size):
     # pytesseract.pytesseract.tesseract_cmd = 'path/to/pytesseract'
@@ -63,7 +65,7 @@ if __name__ =="__main__":
     try :
 
 
-        API_ENDPOINT = "http://127.0.0.1:8000/api/"
+        API_ENDPOINT = "http://18.188.142.12/delhi-police/public/api/"
 
         parser = argparse.ArgumentParser(description='Short sample app')
         parser.add_argument('-id','--id', required=False,  type=int)
@@ -81,7 +83,7 @@ if __name__ =="__main__":
 
         if(response['status']) :
             for record in response['data'] :
-                args = vars(record['id'])
+                args = record['id']
 
                 #define variable from api
                 site_url = record['url']
@@ -90,7 +92,7 @@ if __name__ =="__main__":
                 from_date = record['from_date']
                 to_date = record['to_date']
 
-                # driver = webdriver.Firefox()
+                driver = webdriver.Firefox()
                 driver.implicitly_wait(30)
                 driver.maximize_window()
 
@@ -185,10 +187,11 @@ if __name__ =="__main__":
                         'data':source_code
 
                     }
+                    UPDATE_URL = API_ENDPOINT+"update-data"
                     # sending post request and saving response as response object
-                    post_data = requests.post(url = API_ENDPOINT, data = data)
+                    post_data = requests.post(url = UPDATE_URL, data = data)
 
-                    res = r.json()
+                    res = post_data.json()
 
                     for link in output.find_elements_by_tag_name('a') :
                         link.click()
