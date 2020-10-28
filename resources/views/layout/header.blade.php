@@ -28,7 +28,7 @@
                     <div class="d-flex">
                         <!-- LOGO -->
                         <div class="navbar-brand-box">
-                            <a href="index.html" class="logo logo-dark text-left">
+                            <a href="{{ url('/') }}" class="logo logo-dark text-left">
                                 <span class="logo-sm">
                                     <img src="{{ asset('assets/images/lq-logo-m.png')}}" alt="" height="30">
                                 </span>

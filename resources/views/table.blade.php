@@ -19,11 +19,11 @@
             <div class="container-fluid">
                 <div class="row align-items-center">
                     <div class="col-md-8">
-                        <h4 class="page-title mb-1">Select your court</h4>
-                        <!-- <ol class="breadcrumb m-0">
-                            <li class="breadcrumb-item"><a href="javascript: void(0);">Select your court</a></li>
-                         <li class="breadcrumb-item active">Search by Order Date</li>
-                        </ol> -->
+                        <h4 class="page-title mb-1">Display:</h4>
+                        <ol class="breadcrumb m-0">
+                            <li class="breadcrumb-item"><a href="javascript: void(0);">Court Orders</a></li>
+                        <li class="breadcrumb-item active">Search by Order Date</li>
+                        </ol>
                     </div>
                     <div class="col-md-4">
                         <div class="float-right d-none d-md-block">
@@ -58,39 +58,50 @@
                     {{session('errors')}}
                 </div>
                 @endif
+                <div class="table-responsive">
+                    <table id="showList3" class="bordered table table-centered table-hover mb-0 dataTable no-footer">
+                        <thead>
+                            <tr >
+                            <th style="font-weight:bold;" width="5%">Sr No</th>
+                            <th style="font-weight:bold;text-align:left;" width="45%">Case Type/Case Number/Case Year</th>
+                            <th style="font-weight:bold;text-align:center;" width="20%">Order Date</th>
+                            <th style="font-weight:bold;text-align:center;" width="25%">Order Number</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($data as $key => $list )
+                                <tr>
+                                    <td>{{ $key+1 }}</td>
+                                    <td>{{ $list->case_number }}</td>
+                                    <td>{{ $list->order_date }}</td>
+                                    <td>{!! $list->link !!}</td>
 
-                <div class="links">
+                                </tr>
+                            @endforeach
+                        </tbody>
 
-
-
-                    <ol>
-
-                        <li><a href="index" target="_blank">Center Delhi</a></li>
-
-                        <li><a href="east-delhi" target="_blank">East Delhi</a></li>
-                        <li><a href="new-delhi" target="_blank">New Delhi</a></li>
-
-                        <li><a href="north-delhi" target="_blank">North Delhi</a></li>
-                        <li><a href="south-delhi" target="_blank">South Delhi</a></li>
-
-                        <li><a href="west-delhi" target="_blank">West Delhi</a></li>
-                        <li><a href="south-west-delhi" target="_blank">South West Delhi</a></li>
-
-                        <li><a href="south-east-delhi" target="_blank">South East Delhi</a></li>
-                        <li><a href="shahdra" target="_blank">Shahadra</a></li>
-
-                        <li><a href="north-east-delhi" target="_blank">North East Delhi</a></li>
-                        <li><a href="north-west-delhi" target="_blank">North West Delhi</a></li>
-
-                    </ol>
-
-
-
+                    </table>
                 </div>
-                </div>
+</div>
 </div>
 </div>
 <!-- end col -->
 </div>
+<!-- end row -->
+@section('script')
+<script src="//cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"> </script>
+<script>
+
+$(document).ready(function(){
+    // $("#showList3").children('tbody').children('tr:first').hide();
+
+    // $('#showList3').addClass('table table-centered table-hover mb-0');
+    $('#showList3').DataTable();
+
+})
+
+</script>
 
 @endsection
+@endsection
+

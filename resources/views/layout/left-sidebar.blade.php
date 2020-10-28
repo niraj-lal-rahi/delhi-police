@@ -10,28 +10,28 @@
                 <li class="menu-title">Menu</li>
 
                 <li>
-                    <a href="#" class="waves-effect">
+                    <a href="{{ url('/') }}" class="waves-effect">
                         <div class="d-inline-block icons-sm mr-1"><i class="uim uim-airplay"></i></div><span class="badge badge-pill badge-success float-right">3</span>
                         <span>Dashboard</span>
                     </a>
                 </li>
 
                 <li>
-                    <a href="#" class=" waves-effect">
+                    <a href="{{ url('/') }}" class=" waves-effect">
                         <div class="d-inline-block icons-sm mr-1">
                             <i class="uim uim-briefcase"></i></div>
-                        <span>Workspace</span>
+                        <span>Scrapper</span>
                     </a>
                 </li>
 
                 <li>
-                    <a href="#" class=" waves-effect">
+                    <a href="{{ url('list-data') }}" class=" waves-effect">
                         <div class="d-inline-block icons-sm mr-1">
                             <span class="uim-svg">
                                 <img src="./assets/images/icons/act.svg" height="18px" alt="">
                             </span>
                         </div>
-                        <span>Act</span>
+                        <span>Data</span>
                     </a>
                 </li>
 

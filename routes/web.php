@@ -20,6 +20,7 @@ Route::get('/', function () {
 Route::get('index','IndexController@index');
 Route::post('index','IndexController@store')->name('court.store');
 
+Route::get('center-delhi','IndexController@index');
 Route::get('east-delhi','IndexController@eastDelhi');
 Route::get('new-delhi','IndexController@newDelhi');
 Route::get('north-delhi','IndexController@northDelhi');
@@ -34,4 +35,8 @@ Route::get('north-east-delhi','IndexController@northEastDelhi');
 
 Route::get('pdf-generator','PdfController@index');
 
-Route::get('data/{id}','IndexController@show');
+Route::get('data/show/{id}','IndexController@listDataView');
+
+Route::get('list-data','IndexController@listData');
+
+Route::get('dom-parser','IndexController@domParser');

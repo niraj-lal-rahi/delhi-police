@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Symfony\Component\Process\Process;
 use Symfony\Component\Process\Exception\ProcessFailedException;
 use App\CourtOrders;
-
+use PHPHtmlParser\Dom;
 class IndexController extends Controller
 {
     //
@@ -51,6 +51,10 @@ class IndexController extends Controller
 
     public function northEastDelhi(){
         return view('north-east-delhi');
+    }
+
+    public function listData(){
+        return view('list-data');
     }
 
     public function store(Request $request){
@@ -107,6 +111,77 @@ class IndexController extends Controller
 
         }catch(\Exception $exception){
             return redirect()->back()->withErrors($exception->getMessage());
+        }
+    }
+
+
+    public function listDataView($id,Request $request){
+
+        try{
+            $data = \App\OrdersData::where('site_id',1)->get();
+
+            return view('table',compact('data'));
+        }catch(\Exception $exception){
+            dd($exception->getMessage());
+        }
+    }
+
+
+    public function domParser(CourtOrders $courtOrders){
+
+        try{
+
+            $dom = new Dom;
+            $courtOrders = $courtOrders->get();
+            $courtOrders->each(function($html) use ($dom){
+                $dom->loadStr($html->data);
+                $rows = $dom->find('tr');
+                $j = 0;
+                $data = array();
+                echo "<pre>";
+                foreach($rows as $key => $row){
+
+                    if($key){
+
+
+                        // print_r($row->getChildren()[0]->innerHtml);
+                        foreach($row->getChildren() as $childKey => $td){
+                            if(!$td->hasAttribute('colspan')){
+                                if($childKey == 0)
+                                    $data[$j]['s_no'] = $td->innerHtml;
+                                if($childKey == 1)
+                                    $data[$j]['case_number'] = $td->innerHtml;
+                                if($childKey == 2)
+                                    $data[$j]['order_date'] = \Carbon\Carbon::parse($td->innerHtml)->format('Y-m-d');
+                                if($childKey == 3)
+                                    $data[$j]['link'] = $td->innerHtml;
+
+                                $data[$j]['created_at'] = \Carbon\Carbon::now();
+
+                            }
+
+
+                        }
+                        $j++;
+
+                    }
+
+                }
+                if(count($data) > 500){
+
+                    foreach(array_chunk($data,500) as $insert){
+                        \App\OrdersData::insert($insert);
+                    }
+
+                }else{
+                    \App\OrdersData::insert($data);
+                }
+            });
+
+
+        }catch(\Exception $exception){
+            dd($exception->getMessage());
+            // return redirect()->back()->withErrors($exception->getMessage());
         }
     }
 }
