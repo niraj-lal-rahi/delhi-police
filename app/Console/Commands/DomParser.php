@@ -12,7 +12,7 @@ class DomParser extends Command
      *
      * @var string
      */
-    protected $signature = 'dom:parse';
+    protected $signature = 'parse:dom';
 
     /**
      * The console command description.

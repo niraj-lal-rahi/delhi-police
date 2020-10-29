@@ -21,3 +21,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::get('list','Api\IndexController@index');
 
 Route::post('update-data','Api\IndexController@store');
+Route::post('store/pdf-text','Api\IndexController@storePdfText');
+Route::get('pdf-text','Api\IndexController@list');
