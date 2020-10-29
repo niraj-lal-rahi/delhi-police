@@ -119,7 +119,7 @@ class IndexController extends Controller
     public function listDataView($id,Request $request){
 
         try{
-            $data = \App\OrdersData::where('site_id',1)->get();
+            $data = \App\OrdersData::where('site_id',$id)->get();
 
             return view('table',compact('data'));
         }catch(\Exception $exception){
