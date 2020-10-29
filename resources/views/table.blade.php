@@ -93,6 +93,16 @@
 <script>
 
 $(document).ready(function(){
+    var route = "{{ route('display') }}";
+    $.each($('a'),function(){
+        // console.log($(this).attr('href'));
+        var url = $(this).attr('href');
+        var new_url = url.replace('display_pdf.php',route);
+
+        $(this).attr('href',new_url);
+        // console.log(new_url);
+    })
+
     $('#showList3').DataTable();
 })
 

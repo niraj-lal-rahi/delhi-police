@@ -133,13 +133,13 @@ class IndexController extends Controller
         try{
 
             $dom = new Dom;
-            $courtOrders = $courtOrders->get();
+            $courtOrders = $courtOrders->where('data','!=',null)->get();
             $courtOrders->each(function($html) use ($dom){
                 $dom->loadStr($html->data);
                 $rows = $dom->find('tr');
                 $j = 0;
                 $data = array();
-                echo "<pre>";
+
                 foreach($rows as $key => $row){
 
                     if($key){
@@ -183,6 +183,28 @@ class IndexController extends Controller
         }catch(\Exception $exception){
             dd($exception->getMessage());
             // return redirect()->back()->withErrors($exception->getMessage());
+        }
+    }
+
+
+    public function displayPdf(Request $request){
+
+        try{
+
+            $nameArray = explode('/',$request->filename);
+            $filename = $nameArray[count($nameArray)-1];
+
+            $checkExist = \Storage::disk('public')->exists($filename);
+
+            if($checkExist){
+                return \Storage::disk('public')->download($filename);
+            }
+
+            dd("File does not exist.");
+
+        }catch(\Exception $exception){
+            dd($exception->getMessage());
+
         }
     }
 }

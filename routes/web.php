@@ -38,3 +38,5 @@ Route::get('pdf-generator','PdfController@index');
 Route::get('data/show/{id}','IndexController@listDataView')->name('show.data');
 Route::get('list-data','IndexController@listData');
 Route::get('dom-parser','IndexController@domParser');
+
+Route::get('display-pdf','IndexController@displayPdf')->name('display');
