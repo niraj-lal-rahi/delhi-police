@@ -40,3 +40,5 @@ Route::get('list-data','IndexController@listData');
 Route::get('dom-parser','IndexController@domParser');
 
 Route::get('display-pdf','IndexController@displayPdf')->name('display');
+
+Route::get('update-site-id','IndexController@updateSiteId');

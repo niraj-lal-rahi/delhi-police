@@ -210,4 +210,22 @@ class IndexController extends Controller
 
         }
     }
+
+    public function updateSiteId(){
+        try{
+            $list = \App\CourtOrders::where('site_id','0')->get();
+            $list->each(function($request){
+                $siteUrl = \App\CourtList::where('link',$request->url)->get()->first();
+                $update = \App\CourtOrders::find($request->id);
+
+                $update->site_id = $siteUrl->id;
+                $update->save();
+
+            });
+
+        }catch(\Exception $exception){
+            dd($exception->getMessage());
+
+        }
+    }
 }
