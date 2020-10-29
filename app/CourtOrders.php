@@ -8,5 +8,5 @@ class CourtOrders extends Model
 {
     //
 
-    protected $fillable = ['url', 'court_type','court_complex','from_date','to_date','data'];
+    protected $fillable = ['url', 'court_type','court_complex','from_date','to_date','data','site_id','filter_status'];
 }

@@ -1,0 +1,37 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+class AddColumnSiteIdCourtOrdersTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::table('court_orders', function (Blueprint $table) {
+            //
+            $table->unsignedBigInteger('site_id')->after('data');
+            $table->enum('filter_status',['0','1'])->after('data')->default('0');
+            // $table->foreign('site_id')->references('id')->on('court_lists');
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::table('court_orders', function (Blueprint $table) {
+            //
+            $table->drop('site_id');
+            $table->drop('filter_status');
+        });
+    }
+}

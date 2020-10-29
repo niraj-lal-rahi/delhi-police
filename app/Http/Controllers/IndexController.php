@@ -74,6 +74,8 @@ class IndexController extends Controller
                 return redirect()->back()->withErrors($validate->errors()->first());
             }
 
+            $siteUrl = \App\CourtList::where('link',$request->court_url)->get()->first();
+
             $create = \App\CourtOrders::create(
                 [
                     'url' => $request->court_url,
@@ -81,6 +83,7 @@ class IndexController extends Controller
                     'court_complex' => $request->court_type == '1' ? $request->court_complex_code : $request->court_code,
                     'from_date' => $request->from_date,
                     'to_date' => $request->to_date,
+                    'site_id' => $siteUrl->id
                 ]
             );
 
