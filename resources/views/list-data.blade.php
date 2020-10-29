@@ -66,7 +66,7 @@
                     <ol>
 
                         @foreach ($courtList as $list )
-                            <li><a href="{{ url($list->local_link) }}" target="_blank">{{ $list->court_name }}</a></li>
+                            <li><a href="{{ route('show.data',[$list->id]) }}" target="_blank">{{ $list->court_name }}</a></li>
                         @endforeach
 
                     </ol>
