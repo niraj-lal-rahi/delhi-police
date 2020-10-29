@@ -54,7 +54,8 @@ class IndexController extends Controller
     }
 
     public function listData(){
-        return view('list-data');
+        $courtList = \App\CourtList::get();
+        return view('list-data',compact('courtList'));
     }
 
     public function store(Request $request){

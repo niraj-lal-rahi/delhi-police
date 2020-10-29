@@ -14,7 +14,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $courtList = \App\CourtList::get();
+    return view('welcome',compact('courtList'));
 });
 
 Route::get('index','IndexController@index');
@@ -34,9 +35,6 @@ Route::get('north-east-delhi','IndexController@northEastDelhi');
 
 
 Route::get('pdf-generator','PdfController@index');
-
 Route::get('data/show/{id}','IndexController@listDataView');
-
 Route::get('list-data','IndexController@listData');
-
 Route::get('dom-parser','IndexController@domParser');

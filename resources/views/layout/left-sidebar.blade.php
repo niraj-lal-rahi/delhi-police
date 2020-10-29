@@ -9,12 +9,12 @@
             <ul class="metismenu list-unstyled" id="side-menu">
                 <li class="menu-title">Menu</li>
 
-                <li>
+                {{-- <li>
                     <a href="{{ url('/') }}" class="waves-effect">
                         <div class="d-inline-block icons-sm mr-1"><i class="uim uim-airplay"></i></div><span class="badge badge-pill badge-success float-right">3</span>
                         <span>Dashboard</span>
                     </a>
-                </li>
+                </li> --}}
 
                 <li>
                     <a href="{{ url('/') }}" class=" waves-effect">
@@ -35,7 +35,7 @@
                     </a>
                 </li>
 
-                <li>
+                {{-- <li>
                     <a href="#" class=" waves-effect">
                         <div class="d-inline-block icons-sm mr-1">
                             <i class="uim uim-history-alt"></i></div>
@@ -122,7 +122,7 @@
                         </div>
                         <span>Archives</span>
                     </a>
-                </li>
+                </li> --}}
             </ul>
 
         </div>

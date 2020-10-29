@@ -17,6 +17,7 @@ class CreateCourtListsTable extends Migration
             $table->id();
             $table->string('court_name');
             $table->text('link');
+            $table->string('local_link');
             $table->timestamps();
         });
     }

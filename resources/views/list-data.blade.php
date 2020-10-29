@@ -65,22 +65,9 @@
 
                     <ol>
 
-                        <li><a href="index" target="_blank">Center Delhi</a></li>
-
-                        <li><a href="east-delhi" target="_blank">East Delhi</a></li>
-                        <li><a href="new-delhi" target="_blank">New Delhi</a></li>
-
-                        <li><a href="north-delhi" target="_blank">North Delhi</a></li>
-                        <li><a href="south-delhi" target="_blank">South Delhi</a></li>
-
-                        <li><a href="west-delhi" target="_blank">West Delhi</a></li>
-                        <li><a href="south-west-delhi" target="_blank">South West Delhi</a></li>
-
-                        <li><a href="south-east-delhi" target="_blank">South East Delhi</a></li>
-                        <li><a href="shahdra" target="_blank">Shahadra</a></li>
-
-                        <li><a href="north-east-delhi" target="_blank">North East Delhi</a></li>
-                        <li><a href="north-west-delhi" target="_blank">North West Delhi</a></li>
+                        @foreach ($courtList as $list )
+                            <li><a href="{{ url($list->local_link) }}" target="_blank">{{ $list->court_name }}</a></li>
+                        @endforeach
 
                     </ol>
 
