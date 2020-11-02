@@ -34,7 +34,7 @@ Route::get('north-west-delhi','IndexController@northWestDelhi');
 Route::get('north-east-delhi','IndexController@northEastDelhi');
 
 
-Route::get('pdf-generator','PdfController@index');
+Route::get('pdf-text-data','PdfController@index')->name('pdf-content');
 Route::get('data/show/{id}','IndexController@listDataView')->name('show.data');
 Route::get('list-data','IndexController@listData');
 Route::get('dom-parser','IndexController@domParser');
@@ -42,3 +42,10 @@ Route::get('dom-parser','IndexController@domParser');
 Route::get('display-pdf','IndexController@displayPdf')->name('display');
 
 Route::get('update-site-id','IndexController@updateSiteId');
+
+
+Route::get('data/list/{id}','IndexController@getRecord')->name('json.data');
+
+Route::get('pdf-content', function () {
+    return view('pdf-data');
+})->name('pdf-view');

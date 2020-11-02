@@ -124,10 +124,39 @@ class IndexController extends Controller
         try{
             $data = \App\OrdersData::where('site_id',$id)->get();
 
-            return view('table',compact('data'));
+            return view('table',compact('data','id'));
         }catch(\Exception $exception){
             dd($exception->getMessage());
         }
+    }
+
+    public function getRecord($id,Request $request){
+        $newRoute = route('display');
+
+        if($request->from_date != ""){
+            return datatables()->of(\App\OrdersData::where('site_id',$id)
+            ->whereBetween('order_date',[\Carbon\Carbon::parse($request->from_date)->format('Y-m-d'),\Carbon\Carbon::parse($request->to_date)->format('Y-m-d')]))
+            ->addIndexColumn()
+            ->addColumn('action',function ($row) use($newRoute){
+
+                return str_replace('display_pdf.php',$newRoute,$row->link);
+
+
+                // return $row->link;
+            })
+            ->make(true);
+
+        }
+        return datatables()->of(\App\OrdersData::where('site_id',$id))
+        ->addIndexColumn()
+        ->addColumn('action',function ($row) use($newRoute){
+
+            return str_replace('display_pdf.php',$newRoute,$row->link);
+
+
+            // return $row->link;
+        })
+        ->make(true);
     }
 
 

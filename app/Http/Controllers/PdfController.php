@@ -10,48 +10,21 @@ class PdfController extends Controller
 
     public function index(Request $request){
         try{
-            $list = \App\CourtOrders::where('data','!=','')->get();
+            $newRoute = route('display');
+            return datatables()->of(\App\PdfContent::get())
+            ->addIndexColumn()
+            ->addColumn('text',function($row){
+                return strip_tags($row->content);
+            })
+            ->addColumn('action',function ($row) use($newRoute){
 
-            $href = array();
-            foreach($list as $list){
-                if($list->data != ''){
-                    // dd($list->data);
-                    // exit;
-                    $document = HtmlDomParser::str_get_html($list->data);
+                $filename =  str_replace('/var/www/html/delhi-police/storage/app/public/',"",$row->file_name);
 
-                    dd($document);
-                    if($document){
-                        foreach($document->find('a') as $aTag){
+                $link = '<a href="'.$newRoute.'?filename=/orders/2017/'.$filename.'" target="_blank" id="orderid" class="text-center">COPY OF ORDER</a>';
+                return $link;
 
-                            $href[] = $aTag->href;
-                            echo $aTag->href."<br/>";
-                        }
-                        // echo "---next";
-                    }
-
-                }
-
-
-            }
-
-            foreach($href as $link){
-                $query_string = explode('?',$link); //return array
-                $query = explode('&',$query_string[1]);
-
-
-                $file_name = str_replace('filename=','',$query[0]);
-                // dd($query_string,$query,$file_name);
-
-                $url = "https://services.ecourts.gov.in/ecourtindia_v4_bilingual/cases/".$link;
-                echo "<pre>";
-                print_r( get_headers($url));
-
-                // $contents = file_get_contents($url);
-                // \Storage::disk('public')->put($file_name, $contents);
-                // file_get_contents()
-                // \Storage::disk('public')->put('filename.pdf', $contents);
-            }
-
+            })
+            ->make(true);
 
 
         }catch(\Exception $exception){

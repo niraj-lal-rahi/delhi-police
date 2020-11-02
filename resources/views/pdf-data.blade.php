@@ -22,7 +22,7 @@
                         <h4 class="page-title mb-1">Display:</h4>
                         <ol class="breadcrumb m-0">
                             <li class="breadcrumb-item"><a href="javascript: void(0);">Court Orders</a></li>
-                        <li class="breadcrumb-item active">Search by Order Date</li>
+                        <li class="breadcrumb-item active">Search in Pdf Text</li>
                         </ol>
                     </div>
                     <div class="col-md-4">
@@ -59,22 +59,14 @@
                 </div>
                 @endif
                 <div class="table-responsive">
-                    <div class="col-md-2">
-                        <input type="text" name="date_picker" class="form-control" placeholder="From Date" readonly />
-                        <input type="hidden" name="from_date" id="from_date" class="form-control" placeholder="From Date" readonly />
-                        <input type="hidden" name="to_date" id="to_date" class="form-control" placeholder="To Date" readonly />
 
-                    </div>
-                    {{-- <div class="col-md-4">
-                        <input type="text" name="to_date" id="to_date" class="form-control" placeholder="To Date" readonly />
-                    </div> --}}
                     <table id="showList3" class="bordered table table-centered table-hover mb-0 dataTable no-footer">
                         <thead>
                             <tr >
                             <th style="font-weight:bold;" width="5%">Sr No</th>
-                            <th style="font-weight:bold;text-align:left;" width="45%">Case Type/Case Number/Case Year</th>
-                            <th style="font-weight:bold;text-align:center;" width="20%">Order Date</th>
-                            <th style="font-weight:bold;text-align:center;" width="25%">Order Number</th>
+                            <th style="font-weight:bold;text-align:left;" width="45%">Content</th>
+                            {{-- <th style="font-weight:bold;text-align:center;" width="20%">Order Date</th> --}}
+                            <th style="font-weight:bold;text-align:center;" width="25%">Download</th>
                             </tr>
                         </thead>
                         {{-- <tbody>
@@ -107,32 +99,17 @@
 
 $(document).ready(function(){
 
-    $('input[name="date_picker"]').daterangepicker();
-
-
-    // var route = "{{ route('display') }}";
-    // $.each($('a'),function(){
-    //     // console.log($(this).attr('href'));
-    //     var url = $(this).attr('href');
-    //     var new_url = url.replace('display_pdf.php',route);
-
-    //     $(this).attr('href',new_url);
-    //     // console.log(new_url);
-    // })
-
-
-
     var table = $('#showList3').DataTable({
         processing: true,
         serverSide: true,
         ajax: {
-            "url" : "{{ route('json.data',['id' => $id]) }}",
-            "data" : function ( d ) {
-                return $.extend( {}, d, {
-                    "from_date": $("#from_date").val(),
-                    "to_date":$("#to_date").val()
-                });
-            },
+            "url" : "{{ route('pdf-content') }}",
+            // "data" : function ( d ) {
+            //     return $.extend( {}, d, {
+            //         "from_date": $("#from_date").val(),
+            //         "to_date":$("#to_date").val()
+            //     });
+            // },
         },
 
         columns: [
@@ -143,19 +120,18 @@ $(document).ready(function(){
                     return meta.row + meta.settings._iDisplayStart + 1;
                 }
             },
-            { data: 'case_number', name: 'case_number' },
-            { data: 'order_date', name: 'order_date' },
+            { data: 'text', name: 'text' },
             { data: 'action', name: 'link' }
         ]
     });
 
-    $('input[name="date_picker"]').on('apply.daterangepicker', function(ev, picker) {
-        console.log(picker.endDate.format('MM/DD/YYYY'),'---------------pickr apply');
-        $("#to_date").val(picker.endDate.format('MM/DD/YYYY'));
-        $("#from_date").val(picker.startDate.format('MM/DD/YYYY'));
-        table.draw();
-    //   $(this).val(picker.startDate.format('MM/DD/YYYY') + ' - ' + picker.endDate.format('MM/DD/YYYY'));
-    });
+    // $('input[name="date_picker"]').on('apply.daterangepicker', function(ev, picker) {
+    //     console.log(picker.endDate.format('MM/DD/YYYY'),'---------------pickr apply');
+    //     $("#to_date").val(picker.endDate.format('MM/DD/YYYY'));
+    //     $("#from_date").val(picker.startDate.format('MM/DD/YYYY'));
+    //     table.draw();
+    // //   $(this).val(picker.startDate.format('MM/DD/YYYY') + ' - ' + picker.endDate.format('MM/DD/YYYY'));
+    // });
 })
 
 </script>

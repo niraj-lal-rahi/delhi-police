@@ -34,7 +34,16 @@
                         <span>Data</span>
                     </a>
                 </li>
-
+                <li>
+                    <a href="{{ url('pdf-content') }}" class=" waves-effect">
+                        <div class="d-inline-block icons-sm mr-1">
+                            <span class="uim-svg">
+                                <img src="./assets/images/icons/act.svg" height="18px" alt="">
+                            </span>
+                        </div>
+                        <span>Pdf Data</span>
+                    </a>
+                </li>
                 {{-- <li>
                     <a href="#" class=" waves-effect">
                         <div class="d-inline-block icons-sm mr-1">
