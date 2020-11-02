@@ -90,16 +90,16 @@
 </div>
 <!-- end row -->
 @section('script')
-<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
-<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+<script src="//cdn.datatables.net/plug-ins/1.10.21/features/searchHighlight/dataTables.searchHighlight.min.js"></script>
 <script src="//cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"> </script>
+<script src="http://bartaz.github.io/sandbox.js/jquery.highlight.js"></script>
+<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/plug-ins/1.10.21/features/searchHighlight/dataTables.searchHighlight.css" />
 <script>
 
 $(document).ready(function(){
 
     var table = $('#showList3').DataTable({
+        searchHighlight: true,
         processing: true,
         serverSide: true,
         ajax: {
@@ -123,6 +123,17 @@ $(document).ready(function(){
             { data: 'text', name: 'text' },
             { data: 'action', name: 'link' }
         ]
+    });
+
+    table.on( 'draw', function () {
+        var body = $( table.table().body() );
+
+        body.unhighlight();
+        if ( table.rows( { filter: 'applied' } ).data().length ) {
+
+            console.log(table.search(),'-------------------search txt');
+            body.highlight( table.search() );
+        }
     });
 
     // $('input[name="date_picker"]').on('apply.daterangepicker', function(ev, picker) {
