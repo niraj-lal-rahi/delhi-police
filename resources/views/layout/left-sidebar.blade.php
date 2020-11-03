@@ -28,7 +28,7 @@
                     <a href="{{ url('list-data') }}" class=" waves-effect">
                         <div class="d-inline-block icons-sm mr-1">
                             <span class="uim-svg">
-                                <img src="./assets/images/icons/act.svg" height="18px" alt="">
+                                <img src="{{ asset('/assets/images/icons/act.svg') }}" height="18px" alt="">
                             </span>
                         </div>
                         <span>Data</span>
@@ -38,7 +38,7 @@
                     <a href="{{ url('list-data') }}" class=" waves-effect">
                         <div class="d-inline-block icons-sm mr-1">
                             <span class="uim-svg">
-                                <img src="./assets/images/icons/act.svg" height="18px" alt="">
+                                <img src="{{ asset('/assets/images/icons/act.svg') }}" height="18px" alt="">
                             </span>
                         </div>
                         <span>Global Search</span>
@@ -48,7 +48,7 @@
                     <a href="{{ url('pdf-content') }}" class=" waves-effect">
                         <div class="d-inline-block icons-sm mr-1">
                             <span class="uim-svg">
-                                <img src="./assets/images/icons/act.svg" height="18px" alt="">
+                                <img src="{{ asset('/assets/images/icons/act.svg') }}" height="18px" alt="">
                             </span>
                         </div>
                         <span>Search By Name</span>
@@ -59,7 +59,7 @@
                     <a href="{{ url('date-search') }}" class=" waves-effect">
                         <div class="d-inline-block icons-sm mr-1">
                             <span class="uim-svg">
-                                <img src="./assets/images/icons/act.svg" height="18px" alt="">
+                                <img src="{{ asset('/assets/images/icons/act.svg') }}" height="18px" alt="">
                             </span>
                         </div>
                         <span>Search By Date</span>
@@ -70,7 +70,7 @@
                     <a href="{{ url('pdf-content') }}" class=" waves-effect">
                         <div class="d-inline-block icons-sm mr-1">
                             <span class="uim-svg">
-                                <img src="./assets/images/icons/act.svg" height="18px" alt="">
+                                <img src="{{ asset('/assets/images/icons/act.svg') }}" height="18px" alt="">
                             </span>
                         </div>
                         <span>System Log</span>
@@ -117,7 +117,7 @@
                     <a href="#" class=" waves-effect">
                         <div class="d-inline-block icons-sm mr-1">
                             <span class="uim-svg">
-                                <img src="./assets/images/icons/bill.svg"  height="18px" alt="">
+                                <img src="{{ asset(''/assets/images/icons/bill.svg) }}."  height="18px" alt="">
                             </span>
                         </div>
                         <span>Invoice</span>
@@ -148,7 +148,7 @@
                     <a href="#" class=" waves-effect">
                         <div class="d-inline-block icons-sm mr-1">
                             <span class="uim-svg">
-                                <img src="./assets/images/icons/clients.svg"  height="18px" alt="">
+                                <img src="{{ asset('') }sets/images/icons/clients.svg}./as"  height="18px" alt="">
                             </span>
                         </div>
                         <span>My Clients</span>
@@ -159,7 +159,7 @@
                     <a href="#" class=" waves-effect">
                         <div class="d-inline-block icons-sm mr-1">
                             <span class="uim-svg">
-                                <img src="./assets/images/icons/archive.svg"  height="18px" alt="">
+                                <img src="{{ asset('') }sets/images/icons/archive.svg}./as"  height="18px" alt="">
                             </span>
                         </div>
                         <span>Archives</span>

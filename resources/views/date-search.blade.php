@@ -59,21 +59,43 @@
                 </div>
                 @endif
                 <div class="table-responsive">
-                    <div class="col-md-2">
+                    {{-- <div class="col-md-2">
                         <input type="text" name="date_picker" class="form-control" placeholder="From Date" readonly />
                         <input type="hidden" name="from_date" id="from_date" class="form-control" placeholder="From Date" readonly />
                         <input type="hidden" name="to_date" id="to_date" class="form-control" placeholder="To Date" readonly />
 
-                    </div>
+                    </div> --}}
 
-                    <div class="col-md-2">
+                    <div class="row">
+                        <div class="col-sm-6" style="background-color:lavender;">Select date range</div>
+                        <div class="col-sm-6" style="background-color:lavenderblush;">
+                            <input type="text" name="date_picker" class="form-control" placeholder="From Date" readonly />
+                            <input type="hidden" name="from_date" id="from_date" class="form-control" placeholder="From Date" readonly />
+                            <input type="hidden" name="to_date" id="to_date" class="form-control" placeholder="To Date" readonly />
+                        </div>
+                      </div>
+
+
+                       <div class="row">
+                        <div class="col-sm-6" style="background-color:lavender;">Select Court</div>
+                        <div class="col-sm-6" style="background-color:lavenderblush;">
+                            <select name="court" id="court">
+                                <option value="0" selected>Select court </option>
+                                @foreach ($courtList as $list)
+                                    <option value="{{ $list->id }}">{{ $list->court_name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                      </div>
+
+                    {{-- <div class="col-md-2">
                         <select name="court" id="court">
                             <option value="0" selected>Select court </option>
                             @foreach ($courtList as $list)
                                 <option value="{{ $list->id }}">{{ $list->court_name }}</option>
                             @endforeach
                         </select>
-                    </div>
+                    </div> --}}
                     {{-- <div class="col-md-4">
                         <input type="text" name="to_date" id="to_date" class="form-control" placeholder="To Date" readonly />
                     </div> --}}
