@@ -52,3 +52,5 @@ Route::get('pdf-content', function () {
 
 
 Route::get('date-search','IndexController@dateSearch');
+
+Route::get('system-log','IndexController@systemLog')->name('system-log');

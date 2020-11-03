@@ -67,8 +67,8 @@
                     </div> --}}
 
                     <div class="row">
-                        <div class="col-sm-6" style="background-color:lavender;">Select date range</div>
-                        <div class="col-sm-6" style="background-color:lavenderblush;">
+                        <div class="col-sm-6" style="background-color:lavender;padding-top: 10px; padding-left: 20px;">Select date range</div>
+                        <div class="col-sm-6" style="background-color:lavenderblush;padding-top: 10px; padding-left: 20px;">
                             <input type="text" name="date_picker" class="form-control" placeholder="From Date" readonly />
                             <input type="hidden" name="from_date" id="from_date" class="form-control" placeholder="From Date" readonly />
                             <input type="hidden" name="to_date" id="to_date" class="form-control" placeholder="To Date" readonly />
@@ -76,10 +76,12 @@
                       </div>
 
 
-                       <div class="row">
-                        <div class="col-sm-6" style="background-color:lavender;">Select Court</div>
-                        <div class="col-sm-6" style="background-color:lavenderblush;">
-                            <select name="court" id="court">
+                       <div class="row " style="
+                       margin-bottom: 50px;
+                   " >
+                        <div class="col-sm-6" style="background-color:lavender;padding-top: 10px; padding-left: 20px;">Select Court</div>
+                        <div class="col-sm-6" style="background-color:lavenderblush;padding-top: 10px; padding-left: 20px;">
+                            <select name="court" id="court" >
                                 <option value="0" selected>Select court </option>
                                 @foreach ($courtList as $list)
                                     <option value="{{ $list->id }}">{{ $list->court_name }}</option>

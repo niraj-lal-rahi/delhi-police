@@ -67,7 +67,7 @@
                 </li>
 
                 <li>
-                    <a href="{{ url('pdf-content') }}" class=" waves-effect">
+                    <a href="{{ route('system-log') }}" class=" waves-effect">
                         <div class="d-inline-block icons-sm mr-1">
                             <span class="uim-svg">
                                 <img src="{{ asset('/assets/images/icons/act.svg') }}" height="18px" alt="">

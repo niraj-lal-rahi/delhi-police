@@ -25,7 +25,7 @@
                         <li class="breadcrumb-item active">Search by Order Date</li>
                         </ol>
                     </div>
-                    <div class="col-md-4">
+                    {{-- <div class="col-md-4">
                         <div class="float-right d-none d-md-block">
                             <div class="dropdown">
                                 <button class="btn btn-light btn-rounded dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -40,7 +40,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
 
             </div>
@@ -59,12 +59,12 @@
                 </div>
                 @endif
                 <div class="table-responsive">
-                    <div class="col-md-2">
+                    {{-- <div class="col-md-2">
                         <input type="text" name="date_picker" class="form-control" placeholder="From Date" readonly />
                         <input type="hidden" name="from_date" id="from_date" class="form-control" placeholder="From Date" readonly />
                         <input type="hidden" name="to_date" id="to_date" class="form-control" placeholder="To Date" readonly />
 
-                    </div>
+                    </div> --}}
                     {{-- <div class="col-md-4">
                         <input type="text" name="to_date" id="to_date" class="form-control" placeholder="To Date" readonly />
                     </div> --}}
@@ -107,7 +107,7 @@
 
 $(document).ready(function(){
 
-    $('input[name="date_picker"]').daterangepicker();
+    // $('input[name="date_picker"]').daterangepicker();
 
 
     // var route = "{{ route('display') }}";
@@ -149,13 +149,13 @@ $(document).ready(function(){
         ]
     });
 
-    $('input[name="date_picker"]').on('apply.daterangepicker', function(ev, picker) {
-        console.log(picker.endDate.format('MM/DD/YYYY'),'---------------pickr apply');
-        $("#to_date").val(picker.endDate.format('MM/DD/YYYY'));
-        $("#from_date").val(picker.startDate.format('MM/DD/YYYY'));
-        table.draw();
-    //   $(this).val(picker.startDate.format('MM/DD/YYYY') + ' - ' + picker.endDate.format('MM/DD/YYYY'));
-    });
+    // $('input[name="date_picker"]').on('apply.daterangepicker', function(ev, picker) {
+    //     console.log(picker.endDate.format('MM/DD/YYYY'),'---------------pickr apply');
+    //     $("#to_date").val(picker.endDate.format('MM/DD/YYYY'));
+    //     $("#from_date").val(picker.startDate.format('MM/DD/YYYY'));
+    //     table.draw();
+    // //   $(this).val(picker.startDate.format('MM/DD/YYYY') + ' - ' + picker.endDate.format('MM/DD/YYYY'));
+    // });
 })
 
 </script>

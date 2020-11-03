@@ -262,4 +262,13 @@ class IndexController extends Controller
         $courtList = \App\CourtList::get();
         return view('date-search',compact('courtList'));
     }
+
+    public function systemLog(){
+        $log = \App\CourtOrders::get();
+        $courtList = \App\CourtList::get();
+
+        $courts = $courtList->pluck('court_name','id');
+
+        return view('system_log',compact('log','courts'));
+    }
 }

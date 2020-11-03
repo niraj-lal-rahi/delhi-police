@@ -69,6 +69,7 @@ class DomParser extends Command
 
                                 $data[$j]['created_at'] = \Carbon\Carbon::now();
                                 $data[$j]['site_id'] = $html->site_id;
+                                $data[$j]['court_order_id'] = $html->id;
 
                             }
 
