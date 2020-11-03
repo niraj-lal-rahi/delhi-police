@@ -35,15 +35,48 @@
                     </a>
                 </li>
                 <li>
+                    <a href="{{ url('list-data') }}" class=" waves-effect">
+                        <div class="d-inline-block icons-sm mr-1">
+                            <span class="uim-svg">
+                                <img src="./assets/images/icons/act.svg" height="18px" alt="">
+                            </span>
+                        </div>
+                        <span>Global Search</span>
+                    </a>
+                </li>
+                <li>
                     <a href="{{ url('pdf-content') }}" class=" waves-effect">
                         <div class="d-inline-block icons-sm mr-1">
                             <span class="uim-svg">
                                 <img src="./assets/images/icons/act.svg" height="18px" alt="">
                             </span>
                         </div>
-                        <span>Pdf Data</span>
+                        <span>Search By Name</span>
                     </a>
                 </li>
+
+                <li>
+                    <a href="{{ url('pdf-content') }}" class=" waves-effect">
+                        <div class="d-inline-block icons-sm mr-1">
+                            <span class="uim-svg">
+                                <img src="./assets/images/icons/act.svg" height="18px" alt="">
+                            </span>
+                        </div>
+                        <span>Search By Date</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{{ url('pdf-content') }}" class=" waves-effect">
+                        <div class="d-inline-block icons-sm mr-1">
+                            <span class="uim-svg">
+                                <img src="./assets/images/icons/act.svg" height="18px" alt="">
+                            </span>
+                        </div>
+                        <span>System Log</span>
+                    </a>
+                </li>
+
                 {{-- <li>
                     <a href="#" class=" waves-effect">
                         <div class="d-inline-block icons-sm mr-1">
