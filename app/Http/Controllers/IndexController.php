@@ -257,4 +257,9 @@ class IndexController extends Controller
 
         }
     }
+
+    public function dateSearch(){
+        $courtList = \App\CourtList::get();
+        return view('date-search',compact('courtList'));
+    }
 }

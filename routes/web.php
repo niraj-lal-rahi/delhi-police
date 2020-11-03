@@ -49,3 +49,6 @@ Route::get('data/list/{id}','IndexController@getRecord')->name('json.data');
 Route::get('pdf-content', function () {
     return view('pdf-data');
 })->name('pdf-view');
+
+
+Route::get('date-search','IndexController@dateSearch');
