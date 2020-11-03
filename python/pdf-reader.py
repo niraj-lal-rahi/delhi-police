@@ -6,8 +6,8 @@ import requests
 import time
 
 
-# API_ENDPOINT = "http://18.188.142.12/delhi-police/public/api/"
-API_ENDPOINT = "http://127.0.0.1:8000/api/"
+API_ENDPOINT = "http://18.188.142.12/delhi-police/public/api/"
+# API_ENDPOINT = "http://127.0.0.1:8000/api/"
 # os.listdir('/var/www/html/delhi-police/storage/app/public')
 x = glob.glob("/var/www/html/delhi-police/storage/app/public/*pdf")
 

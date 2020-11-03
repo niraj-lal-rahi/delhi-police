@@ -14,8 +14,14 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.action_chains import ActionChains
 import pyautogui
 import requests
-
-
+# for ssh login dependency below
+import subprocess
+import os
+import glob
+from zipfile import ZipFile
+import time
+import platform
+from pathlib import Path
 
 def get_captcha_text(location, size):
     # pytesseract.pytesseract.tesseract_cmd = 'path/to/pytesseract'
@@ -208,3 +214,4 @@ if __name__ =="__main__":
     except Exception as err:
         print('ERROR: %sn' % str(err))
         driver.quit()
+
