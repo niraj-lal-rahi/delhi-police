@@ -34,7 +34,7 @@
                         <span>Data</span>
                     </a>
                 </li>
-                <li>
+                {{-- <li>
                     <a href="{{ url('list-data') }}" class=" waves-effect">
                         <div class="d-inline-block icons-sm mr-1">
                             <span class="uim-svg">
@@ -64,7 +64,7 @@
                         </div>
                         <span>Search By Date</span>
                     </a>
-                </li>
+                </li> --}}
 
                 <li>
                     <a href="{{ route('system-log') }}" class=" waves-effect">

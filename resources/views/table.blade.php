@@ -51,7 +51,7 @@
                 </div>
                 <div class="col-sm-4">
                     <select name="district" id="district" style="width:90%; padding:10px; text-align:left;">
-                        <option value="volvo">Select District Court</option>
+                        <option value="">Select District Court</option>
                         @foreach ($courts as $key =>$court)
                             <option value="{{ $key }}">{{ $court }}</option>
                         @endforeach
@@ -62,7 +62,7 @@
                 <div class="col-sm-4">
 
                     <select name="court_type" id="court_type" style="width:90%; padding:10px; text-align:left;">
-                        <option value="volvo">Select Court type</option>
+                        <option value="">Select Court type</option>
                         <option value="1">Court Complex</option>
                         <option value="2">Court Establish</option>
                     </select>

@@ -220,7 +220,10 @@ class IndexController extends Controller
         //     ->make(true);
 
         // }
+        // $query->get();
 
+        // $insert = \DB::getQueryLog();
+        // dd($insert);
         return datatables()->of($query->get())
         ->addIndexColumn()
         ->addColumn('action',function ($row) use($newRoute){
