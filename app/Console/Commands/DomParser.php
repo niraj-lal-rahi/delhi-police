@@ -64,12 +64,31 @@ class DomParser extends Command
                                     $data[$j]['case_number'] = $td->innerHtml;
                                 if($childKey == 2)
                                     $data[$j]['order_date'] = \Carbon\Carbon::parse($td->innerHtml)->format('Y-m-d');
-                                if($childKey == 3)
+                                // if($childKey == 3)
+                                //     $data[$j]['link'] = $td->innerHtml;
+
+                                // $data[$j]['created_at'] = \Carbon\Carbon::now();
+                                // $data[$j]['site_id'] = $html->site_id;
+                                // $data[$j]['court_order_id'] = $html->id;
+
+                                if($childKey == 3){
                                     $data[$j]['link'] = $td->innerHtml;
+                                    if(count($td->find('a'))){
+                                        $hrefAtrribute = str_replace("display_pdf.php?","",$td->find('a')[0]->getAttribute('href'));
+                                        $explodeArray = explode('&',$hrefAtrribute);
+                                        $explodeFirstKey = explode('/',$explodeArray[0]);
+
+                                        $data[$j]['filename'] = $explodeFirstKey[count($explodeFirstKey)-1];
+                                    }else{
+                                        $data[$j]['filename'] = 'no_file';
+                                    }
+                                    // dd($hrefAtrribute,$explodeArray,$explodeFirstKey);
+                                }
 
                                 $data[$j]['created_at'] = \Carbon\Carbon::now();
                                 $data[$j]['site_id'] = $html->site_id;
                                 $data[$j]['court_order_id'] = $html->id;
+                                $data[$j]['court_type'] = $html->court_type;
 
                             }
 

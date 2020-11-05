@@ -7,6 +7,7 @@ use Symfony\Component\Process\Process;
 use Symfony\Component\Process\Exception\ProcessFailedException;
 use App\CourtOrders;
 use PHPHtmlParser\Dom;
+use App\OrdersData;
 class IndexController extends Controller
 {
     //
@@ -130,7 +131,7 @@ class IndexController extends Controller
         }
     }
 
-    public function getRecord($id,Request $request){
+    public function getRecordOld($id,Request $request){
         $newRoute = route('display');
 
         if($request->from_date != ""){
@@ -148,6 +149,79 @@ class IndexController extends Controller
 
         }
         return datatables()->of(\App\OrdersData::where('site_id',$id))
+        ->addIndexColumn()
+        ->addColumn('action',function ($row) use($newRoute){
+
+            return str_replace('display_pdf.php',$newRoute,$row->link);
+
+
+            // return $row->link;
+        })
+        ->make(true);
+    }
+
+    public function getRecord(Request $request,OrdersData $ordersData){
+
+        $newRoute = route('display');
+        \DB::enableQueryLog();
+        $id = 0;
+        $query = $ordersData->whereRaw('1=1');
+        if($request->district){
+            $id = $request->district;
+            $query->where('site_id',$id);
+
+        }
+
+        if($request->court_type !=  "")
+        {
+            $court_type = $request->court_type;
+            $query->where('court_type',$court_type);
+
+        }
+        if($request->case_no != ""){
+            $case_no = $request->case_no;
+            $query->where('case_number',$case_no);
+        }
+
+        if($request->from_date != ""){
+            $query->whereBetween('order_date',[
+                \Carbon\Carbon::parse($request->from_date)->format('Y-m-d'),
+                \Carbon\Carbon::parse($request->to_date)->format('Y-m-d')
+            ]);
+        }
+
+        if($request->name !=""){
+
+            $data = \App\PdfContent::selectRaw("REPLACE(file_name,'/var/www/html/delhi-police/storage/app/public/','') as name")
+            ->where('content','like','%'.$request->name.'%')
+            ->get();
+            $set = "";
+            foreach($data as $filename){
+                $set .= "$filename->name,";
+            }
+
+            $query->whereRaw("FIND_IN_SET(filename,'$set')");
+
+        }
+
+        // if($request->from_date != ""){
+        //     return datatables()->of(\App\query::where('site_id',$id)
+        //     ->whereBetween('order_date',[
+        //         \Carbon\Carbon::parse($request->from_date)->format('Y-m-d'),
+        //         \Carbon\Carbon::parse($request->to_date)->format('Y-m-d')]))
+        //     ->addIndexColumn()
+        //     ->addColumn('action',function ($row) use($newRoute){
+
+        //         return str_replace('display_pdf.php',$newRoute,$row->link);
+
+
+        //         // return $row->link;
+        //     })
+        //     ->make(true);
+
+        // }
+
+        return datatables()->of($query->get())
         ->addIndexColumn()
         ->addColumn('action',function ($row) use($newRoute){
 
@@ -186,10 +260,27 @@ class IndexController extends Controller
                                     $data[$j]['case_number'] = $td->innerHtml;
                                 if($childKey == 2)
                                     $data[$j]['order_date'] = \Carbon\Carbon::parse($td->innerHtml)->format('Y-m-d');
-                                if($childKey == 3)
+                                if($childKey == 3){
                                     $data[$j]['link'] = $td->innerHtml;
 
+                                    if(count($td->find('a'))){
+                                        $hrefAtrribute = str_replace("display_pdf.php?","",$td->find('a')[0]->getAttribute('href'));
+                                        $explodeArray = explode('&',$hrefAtrribute);
+                                        $explodeFirstKey = explode('/',$explodeArray[0]);
+
+                                        $data[$j]['filename'] = $explodeFirstKey[count($explodeFirstKey)-1];
+                                    }else{
+                                        $data[$j]['filename'] = 'no_file';
+                                    }
+
+                                    // dd($hrefAtrribute,$explodeArray,$explodeFirstKey);
+                                }
+
+
                                 $data[$j]['created_at'] = \Carbon\Carbon::now();
+                                $data[$j]['site_id'] = $html->site_id;
+                                $data[$j]['court_order_id'] = $html->id;
+                                $data[$j]['court_type'] = $html->court_type;
 
                             }
 
@@ -200,6 +291,10 @@ class IndexController extends Controller
                     }
 
                 }
+
+                // echo "<pre>";
+                // print_r($data);
+                // exit;
                 if(count($data) > 500){
 
                     foreach(array_chunk($data,500) as $insert){
@@ -270,5 +365,15 @@ class IndexController extends Controller
         $courts = $courtList->pluck('court_name','id');
 
         return view('system_log',compact('log','courts'));
+    }
+
+
+
+    public function searchView(){
+        $courtList = \App\CourtList::get();
+
+        $courts = $courtList->pluck('court_name','id');
+        $id = 0;
+        return view('table',compact('courts','id'));
     }
 }

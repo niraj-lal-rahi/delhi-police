@@ -44,7 +44,7 @@ Route::get('display-pdf','IndexController@displayPdf')->name('display');
 Route::get('update-site-id','IndexController@updateSiteId');
 
 
-Route::get('data/list/{id}','IndexController@getRecord')->name('json.data');
+// Route::get('data/list/{id}','IndexController@getRecord')->name('json.data');
 
 Route::get('pdf-content', function () {
     return view('pdf-data');
@@ -54,3 +54,8 @@ Route::get('pdf-content', function () {
 Route::get('date-search','IndexController@dateSearch');
 
 Route::get('system-log','IndexController@systemLog')->name('system-log');
+
+
+Route::get('search-data','IndexController@searchView')->name('search');
+
+Route::get('data/list/','IndexController@getRecord')->name('json.data');
