@@ -74,9 +74,14 @@
             </div>
             <div class="w3-bar w3-black">
                 <div class="row">
-                <div class="col-sm-4"><button style="width:90%; background:#3051D3; color:#fff; border:none; padding:10px; text-align:left;" class="w3-bar-item w3-button" onclick="openCity('London')">By case number</button></div>
-                <div class="col-sm-4"><button style="width:90%; background:#3051D3;  color:#fff; border:none; padding:10px; text-align:left;" class="w3-bar-item w3-button" onclick="openCity('Paris')">By name</button></div>
-                <div class="col-sm-4"><button style="width:90%; background:#3051D3;  color:#fff; border:none; padding:10px; text-align:left;" class="w3-bar-item w3-button" onclick="openCity('Tokyo')">By date</button></div>
+                <div class="col-sm-4">
+                    <button style="width:90%; background:#3051D3; color:#fff; border:none; padding:10px; text-align:left;"
+                    class="w3-bar-item w3-button London" onclick="openCity('London')">By case number</button></div>
+                <div class="col-sm-4"><button style="width:90%; background:#000505;  color:#fff; border:none; padding:10px; text-align:left;"
+                    class="w3-bar-item w3-button Paris" onclick="openCity('Paris')">By name</button></div>
+                <div class="col-sm-4">
+                    <button style="width:90%; background:#000505;  color:#fff; border:none; padding:10px; text-align:left;"
+                    class="w3-bar-item w3-button Tokyo" onclick="openCity('Tokyo')">By date</button></div>
                 </div>
             </div>
 
@@ -162,6 +167,9 @@
                 <script type="text/javascript" src="//cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"> </script>
                 <script>
                     function openCity(cityName) {
+                        $(".w3-bar-item").css('background',"#000505");
+
+                        $("."+cityName).css('background',"#3051D3");
 
                         $('input[type="text"]').val('');
                         $('input[type="hidden"]').val('');
