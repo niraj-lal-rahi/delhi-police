@@ -125,7 +125,7 @@ class IndexController extends Controller
         try{
             $data = \App\OrdersData::where('site_id',$id)->get();
 
-            return view('table',compact('data','id'));
+            return view('data',compact('data','id'));
         }catch(\Exception $exception){
             dd($exception->getMessage());
         }

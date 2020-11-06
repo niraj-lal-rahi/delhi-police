@@ -39,6 +39,7 @@ class DomParser extends Command
     public function handle()
     {
         try{
+            ini_set('memory_limit','0');
 
             $dom = new Dom;
             $courtOrders = new CourtOrders;
