@@ -126,7 +126,7 @@ $(document).ready(function(){
         processing: true,
         serverSide: true,
         ajax: {
-            "url" : "{{ route('json.data',['id' => $id]) }}",
+            "url" : "{{ route('json.by-id',['id' => $id]) }}",
             "data" : function ( d ) {
                 return $.extend( {}, d, {
                     "from_date": $("#from_date").val(),

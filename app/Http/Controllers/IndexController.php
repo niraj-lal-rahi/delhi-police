@@ -131,7 +131,7 @@ class IndexController extends Controller
         }
     }
 
-    public function getRecordOld($id,Request $request){
+    public function getRecordById($id,Request $request){
         $newRoute = route('display');
 
         if($request->from_date != ""){
@@ -163,7 +163,7 @@ class IndexController extends Controller
     public function getRecord(Request $request,OrdersData $ordersData){
 
         $newRoute = route('display');
-        \DB::enableQueryLog();
+        // \DB::enableQueryLog();
         $id = 0;
         $query = $ordersData->whereRaw('1=1');
         if($request->district){

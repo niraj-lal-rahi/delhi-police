@@ -44,7 +44,7 @@ Route::get('display-pdf','IndexController@displayPdf')->name('display');
 Route::get('update-site-id','IndexController@updateSiteId');
 
 
-// Route::get('data/list/{id}','IndexController@getRecord')->name('json.data');
+Route::get('data/list/{id}','IndexController@getRecordById')->name('json.by-id');
 
 Route::get('pdf-content', function () {
     return view('pdf-data');
