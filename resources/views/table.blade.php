@@ -34,7 +34,7 @@
         <!-- end page title end breadcrumb -->
         <div class="container-fluid">
 
-            <div class="row" style="margin-top: 10px;"  >
+            <div class="row" style="margin-top: 10px;margin-bottom:10px;"  >
                 <div class="col-sm-4">State</div>
                 <div class="col-sm-4">District</div>
                 <div class="col-sm-4">Forum</div>

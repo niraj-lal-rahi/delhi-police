@@ -58,7 +58,7 @@
                             @foreach ($log as $key => $list )
                                 <tr>
                                     <td>{{ $key+1 }}</td>
-                                    <td>{{ $courts[$list->court_type] }}</td>
+                                    <td>{{ $courts[$list->site_id] }}</td>
                                     <td>{{ $list->from_date }} to {{ $list->to_date }}</td>
                                     <td>{!! $list->created_at !!}</td>
                                     <td>{{ count($list->dataCollection) }}</td>
