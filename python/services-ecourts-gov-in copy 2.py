@@ -1,3 +1,4 @@
+from selenium.webdriver.firefox.options import Options as FirefoxOptions
 from selenium.webdriver.support.ui import Select
 from selenium import webdriver
 from selenium.webdriver.support.ui import WebDriverWait
@@ -6,11 +7,16 @@ from selenium.common.exceptions import TimeoutException
 from PIL import Image
 from pytesseract import image_to_string
 import time
+from selenium.webdriver.firefox.options import Options as FirefoxOptions
+import mysql.connector
 import argparse
-
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.common.action_chains import ActionChains
+import pyautogui
+import requests
 # for ssh login dependency below
 import subprocess
-import os,sys
+import os
 import glob
 from zipfile import ZipFile
 import time
@@ -65,7 +71,7 @@ if __name__ =="__main__":
     try :
 
 
-        API_ENDPOINT = "http://13.233.146.136/DelhiPolice/public/api/"
+        API_ENDPOINT = "http://18.188.142.12/delhi-police/public/api/"
 
         parser = argparse.ArgumentParser(description='Short sample app')
         parser.add_argument('-id','--id', required=False,  type=int)
@@ -92,27 +98,9 @@ if __name__ =="__main__":
                 from_date = record['from_date']
                 to_date = record['to_date']
 
-                #Chrome settings
-                settings = {
-                "recentDestinations": [{
-                        "id": "Save as PDF",
-                        "origin": "local",
-                        "account": "",
-                    }],
-                    "selectedDestinationId": "Save as PDF",
-                    "version": 2
-                }
-                prefs = {'printing.print_preview_sticky_settings.appState': json.dumps(settings)}
-                options = webdriver.ChromeOptions()
-                options.add_experimental_option('prefs', prefs)
-                options.add_argument('--kiosk-printing')
-                options.add_argument('--disable-dev-shm-usage')
-                options.add_argument('--no-sandbox')
-                options.add_argument('--headless')
-                driver = webdriver.Chrome(options=options)
+                driver = webdriver.Firefox()
                 driver.implicitly_wait(30)
                 driver.maximize_window()
-                print('Lets start')
 
                 driver.get(site_url)
                 WebDriverWait(driver, 10).until(lambda d: d.execute_script('return document.readyState') == 'complete')
@@ -131,23 +119,26 @@ if __name__ =="__main__":
                 # calendar values
                 fromDate = driver.find_element_by_id('from_date').send_keys(from_date)
                 toDate = driver.find_element_by_id('to_date').send_keys(to_date)
-                driver.find_element_by_id('to_date').send_keys(Keys.RETURN)
 
+                i = 0
+                k=0
                 previous = ''
 
                 #loop to attempt captcha entry max 20
                 while i<20:
 
-                    time.sleep(10)
+                    time.sleep(2)
+
                     captcha_text = get_captcha_image(driver)
                     captcha = driver.find_element_by_id('captcha')
                     captcha.clear()
                     captcha.send_keys(captcha_text) #enter captcha text
-                    print('submitting captcha')
+
                     driver.execute_script("validate()") #submit
 
+                    time.sleep(3)
+
                     try:
-                        print('reached here:try part')
                         WebDriverWait(driver, 3).until(EC.alert_is_present(),
                                                             'Timed out waiting for PA creation ' +
                                                             'confirmation popup to appear.')
@@ -155,25 +146,43 @@ if __name__ =="__main__":
                         alert = driver.switch_to.alert
                         alert_text = alert.text
                         alert.accept()
+
                         # click to refresh captch
                         driver.find_element_by_xpath('//a[@title="Refresh Image"]').click()
+
                         # print('alert - accept')
                         # print(alert_text)
                         i = i+1
                     except TimeoutException:
-                        print('exception')
 
-                    soup = bs4.BeautifulSoup(driver.page_source,'html.parser')
-                    elems  = soup.select('a[id="orderid"]')
-                    links =[]
-                    for elem in elems:
-                        link = 'https://services.ecourts.gov.in/ecourtindia_v4_bilingual/cases/' + elem['href']
-                        links.append(link)
-                    if links != []:
-                        print(links)
-                        print('Total Docs:'+str(len(links)))
+                        server_error_msg = driver.find_element_by_id('errSpan')
+                        if server_error_msg.is_displayed() :
+                            if k == 0 :
+                                driver.find_element_by_xpath('//a[@title="Refresh Image"]').click()
+                                k = k+1
+                                time.sleep(5)
+
+                            i=i+1
+                        else :
+                            break
 
 
+                    if previous == i :
+                        i=i+1
+                    else :
+                        previous = i
+
+                if i < 20 :
+                    time.sleep(10)
+
+                    j=0
+
+                    while j <100000 :
+                        response_wait = driver.find_element_by_id('divWait')
+                        if response_wait.is_displayed() :
+                            j=j+1
+                        else :
+                            break
 
                     output = driver.find_element_by_id('showList3')
                     source_code = output.get_attribute("outerHTML")
@@ -190,20 +199,17 @@ if __name__ =="__main__":
 
                     res = post_data.json()
 
-                    for m,link in enumerate(links) :
-                        driver.get(link)
-                        time.sleep(10)
-                        driver.execute_script('window.print();')
+                    for link in output.find_elements_by_tag_name('a') :
+                        link.click()
+
                         time.sleep(5)
-                        new_name = link.split('filename=')[1].split('/')[3].split('&')[0].strip()
-                        os.rename('display_pdf.pdf',new_name)
-                        time.sleep(3)
-                        print('Documents completed'+str(m+1))
-                        if m == len(links)-1:
-                            print('Done.Bye-Bye')
-                            driver.quit()
-                            sys.exit()
-        driver.quit()
+                        driver.switch_to.window(driver.window_handles[1])
+                        download_page_from_child_link()
+
+
+                else :
+                    print('We miss data this time, will find in another shot and update you.')
+
 
     except Exception as err:
         print('ERROR: %sn' % str(err))
