@@ -72,9 +72,6 @@ if __name__ =="__main__":
     try :
 
 
-
-
-
         #define variable from api
         site_url = "https://services.ecourts.gov.in/ecourtindia_v4_bilingual/cases/s_casetype.php?state=D&state_cd=26&dist_cd=8"
         court_type = '1'   #Court Complex(default) or Court Establishment
@@ -99,7 +96,7 @@ if __name__ =="__main__":
         options.add_argument('--kiosk-printing')
         options.add_argument('--disable-dev-shm-usage')
         options.add_argument('--no-sandbox')
-        # options.add_argument('--headless')
+        options.add_argument('--headless')
         driver = webdriver.Chrome(options=options)
         driver.implicitly_wait(30)
         driver.maximize_window()
