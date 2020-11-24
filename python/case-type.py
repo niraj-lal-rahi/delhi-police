@@ -12,7 +12,8 @@ import mysql.connector
 import argparse
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.action_chains import ActionChains
-import pyautogui
+import pytesseract ,bs4 ,json
+
 import requests
 # for ssh login dependency below
 import subprocess
@@ -82,7 +83,24 @@ if __name__ =="__main__":
         year = "2020"
         status = "1" # 1 for pending and 0 for disposed
 
-        driver = webdriver.Firefox()
+         #Chrome settings
+        settings = {
+        "recentDestinations": [{
+                "id": "Save as PDF",
+                "origin": "local",
+                "account": "",
+            }],
+            "selectedDestinationId": "Save as PDF",
+            "version": 2
+        }
+        prefs = {'printing.print_preview_sticky_settings.appState': json.dumps(settings)}
+        options = webdriver.ChromeOptions()
+        options.add_experimental_option('prefs', prefs)
+        options.add_argument('--kiosk-printing')
+        options.add_argument('--disable-dev-shm-usage')
+        options.add_argument('--no-sandbox')
+        # options.add_argument('--headless')
+        driver = webdriver.Chrome(options=options)
         driver.implicitly_wait(30)
         driver.maximize_window()
 
@@ -179,8 +197,8 @@ if __name__ =="__main__":
 
             output = driver.find_element_by_id('showList')
             source_code = output.get_attribute("outerHTML")
-
-
+            
+            links = []
             for link in output.find_elements_by_tag_name('a') :
                 # link.click()
                 parent_attribute = link.get_attribute("onclick")
@@ -201,17 +219,22 @@ if __name__ =="__main__":
                     print("second page output +++++++++++")
 
                     for link in second_output.find_elements_by_tag_name('a') :
-
+                        hrefAttribute = link.get_attribute("target")
+                        if(hrefAttribute == "_blank") : 
+                            links.append(link.get_attribute("href"))
                         time.sleep(1)
+
+                        print(links)
                         attribute = link.get_attribute("onclick")
 
                         print(attribute)
-                        print("==========> parent attribute")
+                        print("==========> second attribute")
 
                         if(attribute) :
                             driver.execute_script(str(attribute))
                             time.sleep(3)
                             third_output = driver.find_element_by_id('thirdpage')
+                            second_output_source_code = third_output.get_attribute("outerHTML")
                             print(third_output)
                             print('--------> third page output')
                             driver.execute_script("funBackBusiness()")
@@ -221,7 +244,22 @@ if __name__ =="__main__":
                     time.sleep(2)
                     driver.execute_script("funBack()") #back to the previous page
 
-
+            if links != []:
+                print(links)
+                print('Total Docs:'+str(len(links)))   
+            for m,link in enumerate(links) :
+                driver.get(link)
+                time.sleep(10)
+                driver.execute_script('window.print();')
+                time.sleep(5)
+                new_name = link.split('filename=')[1].split('/')[3].split('&')[0].strip()
+                os.rename('display_pdf.pdf',new_name)
+                time.sleep(3)
+                print('Documents completed'+str(m+1))
+                if m == len(links)-1:
+                    print('Done.Bye-Bye')
+                    # driver.quit()
+                    sys.exit()
 
 
 
@@ -232,5 +270,5 @@ if __name__ =="__main__":
 
     except Exception as err:
         print('ERROR: %sn' % str(err))
-        driver.quit()
+        # driver.quit()
 
