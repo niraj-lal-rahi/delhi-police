@@ -5,9 +5,10 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException
 from PIL import Image
 from pytesseract import image_to_string
+import pytesseract ,bs4 ,json
 import time
 import argparse
-
+import requests
 # for ssh login dependency below
 import subprocess
 import os,sys

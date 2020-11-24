@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCourtOrdersTable extends Migration
+class CreateCaseTypesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,15 @@ class CreateCourtOrdersTable extends Migration
      */
     public function up()
     {
-        Schema::create('court_orders', function (Blueprint $table) {
+        Schema::create('case_types', function (Blueprint $table) {
             $table->id();
-            $table->string('url');
+            $table->text('url');
             $table->string('court_type');
             $table->string('court_complex');
-            $table->string('from_date');
-            $table->string('to_date');
-            $table->longText('data')->nullable();
+            $table->string('case_type');
+            $table->string('year');
+            $table->enum('status',['0','1'])->default(0);
+            $table->enum('scrap_status',['0','1'])->default('0');
             $table->timestamps();
         });
     }
@@ -32,6 +33,6 @@ class CreateCourtOrdersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('court_orders');
+        Schema::dropIfExists('case_types');
     }
 }

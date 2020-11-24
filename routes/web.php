@@ -59,3 +59,9 @@ Route::get('system-log','IndexController@systemLog')->name('system-log');
 Route::get('search-data','IndexController@searchView')->name('search');
 
 Route::get('data/list/','IndexController@getRecord')->name('json.data');
+
+Route::prefix('case-type')->group(function(){
+    Route::get('','CaseTypeController@index');
+    Route::post('','CaseTypeController@store');
+});
+
