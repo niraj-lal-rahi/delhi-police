@@ -59,7 +59,7 @@
                                 @endif
 
                                 <form action="" method="POST">
-                                    <input type="hidden" name="_token" value="SVCeQevKKHsIMAtBfzr9hx8VW1RJUesIBme81ZVH">
+                                    {{ csrf_field() }}
                                     <input type="hidden" name="court_url" value="https://services.ecourts.gov.in/ecourtindia_v4_bilingual/cases/s_casetype.php?state=D&state_cd=26&dist_cd=8">
                                 <div class="form-check-inline form-group">
                 

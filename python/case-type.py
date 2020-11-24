@@ -63,7 +63,7 @@ if __name__ =="__main__":
 
         config = {
             'user': 'root',
-                'password': '12345',
+                'password': 'randompassword',
                     'unix_socket': '/var/run/mysqld/mysqld.sock',
                         'database': 'delhi_police',
                             'raise_on_warnings': True,
