@@ -63,7 +63,7 @@ if __name__ =="__main__":
 
         config = {
             'user': 'root',
-                'password': 'radompassword',
+                'password': '12345',
                     'unix_socket': '/var/run/mysqld/mysqld.sock',
                         'database': 'delhi_police',
                             'raise_on_warnings': True,
@@ -72,7 +72,7 @@ if __name__ =="__main__":
         # connection to database
         mydb = mysql.connector.connect(**config)
 
-        mycursor = mydb.cursor()
+        mycursor = mydb.cursor(buffered=True)
 
         sqlSelect = "SELECT * FROM case_types WHERE scrap_status='0'"
         mycursor.execute(sqlSelect)
@@ -91,6 +91,10 @@ if __name__ =="__main__":
         year = myresult[5]
         status = myresult[6] # 0 for pending and 1 for disposed
         
+
+        district_code = site_url[-1]
+
+        print("district_code "+str(district_code))
         
         
         #Chrome settings
@@ -195,7 +199,7 @@ if __name__ =="__main__":
        
         
         # print("response")
-        print(parent_source_code)
+        # print(parent_source_code)
 
         parent_insert_counter = 1
         
@@ -228,8 +232,6 @@ if __name__ =="__main__":
                 # mycursor.execute(sql , val)
                 mycursor.execute(SQL)
                 mydb.commit()
-                
-                print(mycursor._last_executed)
 
                 parent_id = mycursor.lastrowid
                 print("parent_insert => id => "+str(parent_id))
@@ -262,14 +264,90 @@ if __name__ =="__main__":
 
                     second_output = driver.find_element_by_id('secondpage')
                     second_output_source_code = second_output.get_attribute("outerHTML")
+
+                    mycursor = mydb.cursor()
+                    sql = "INSERT INTO case_type_data( case_types_id, parent_id, level, data) VALUES (%s,%s,%s,%s)"
+                    val = (data_id,parent_id,level,second_output_source_code)
+                    mycursor.execute(sql, val)
+                    mydb.commit()
+                    second_parent_id = mycursor.lastrowid
+
+                    print("second insertion id "+ str(second_parent_id))
                     # print("second table ")
                     # print(second_output_source_code)
-                    second_table = second_output.find_element_by_xpath(("//table[@class='history_table']"))
+
+                    case_status = second_output.find_element_by_xpath("//h2[text() = 'Case Status']/following-sibling::div")
                     
+                    label_count = len(case_status.find_elements_by_tag_name("label"))
+                    first_label = case_status.find_elements_by_tag_name("label")[0]
+                    second_label = case_status.find_elements_by_tag_name("label")[1]
+                    third_label = case_status.find_elements_by_tag_name("label")[2]
+                    fourth_label = case_status.find_elements_by_tag_name("label")[label_count-1]
+
+                    hearing_date = first_label.find_elements_by_tag_name("strong")[1].text
+                    next_hearing = second_label.find_elements_by_tag_name("strong")[1].text
+                    # stage_case = third_label.find_elements_by_tag_name("strong")[1].text 
+                    court_judge = fourth_label.find_elements_by_tag_name("strong")[1].text
+                    
+                    print(str(hearing_date) +" hearing =="+ str(next_hearing) + " next hearing == "  +str(court_judge) + "count  == "+str(label_count))
+                    
+
+                    # insert grid filter data
+                    mycursor = mydb.cursor()
+                    grid_insert_query = "INSERT INTO case_type_data_grids( case_types_id, case_type_parents, case_number, party_name, last_hearing_date, nxt_hearing_date, judge, court_district) VALUES (%s,%s,%s,%s,%s,%s,%s,%s)" 
+                    
+                    print("grid insert query pass")
+                    
+                    grid_val = (str(data_id),str(parent_id),str(case),str(petitioner),str(hearing_date),str(next_hearing),str(court_judge),str(district_code))
+                    
+                    print("grid insert val pass")
+                    
+                    mycursor.execute(grid_insert_query, grid_val)
+                    
+                    print("grid db insertion pass")
+                    
+                    mydb.commit()
+
+                    grid_id = mycursor.lastrowid
+
+                    print("grid db insertion pass last id "+str(grid_id))
+                    # Act data 
+                    try: 
+                        act_table = second_output.find_elements_by_class_name("Acts_table")
+
+                        if len(act_table) > 0 : 
+
+                            print("enter into act table")
+                            act_iteration = 0
+                            for act_table_row in act_table[0].find_elements_by_tag_name('tr') : 
+                                
+                                if act_iteration > 0 :
+                                    get_column = act_table_row.find_elements_by_tag_name('td')
+                                    print("act find td successfull")
+                                    act_value = get_column[0].text
+                                    section_value = get_column[1].text
+                                    
+                                    # insert act and section
+                                    mycursor = mydb.cursor()
+                                    insert_act = "INSERT INTO case_type_act_sections(case_type_data_grids_id, act, sections) VALUES (%s,%s,%s)"
+                                    print("act insert query pass")
+                                    insert_act_val = (grid_id,act_value,section_value)
+                                    mycursor.execute(insert_act, insert_act_val)
+                                    print("act insertion pass")
+                                    mydb.commit()
+                                act_iteration = act_iteration+1
+                    except AttributeError as attrErr: 
+                        print("There is no such attribute Exception") 
+                    # act table end here
+
+                    print(case_status.get_attribute("outerHTML"))
+
                     # print(second_table.get_attribute("outerHTML"))
                     print("second table ")
                     second_table_loop = 0
-
+                    
+                    second_table = second_output.find_element_by_xpath(("//table[@class='history_table']"))
+                    
                     soup = bs4.BeautifulSoup(driver.page_source,'html.parser')
                     elems  = soup.select('a[target="_blank"]')
                     
@@ -280,11 +358,12 @@ if __name__ =="__main__":
                     for second_parent_row in second_table.find_elements_by_tag_name('tr') :
                         
                         if second_table_loop > 0 :
+                            
                             print("second table tr loop")
-                            level = str(2)
+                            
+                            level = str(1)
                             second_parent_row_html = second_parent_row.get_attribute("outerHTML")
 
-                            
                             print(second_parent_row_html)
 
                             second_parent_link = second_parent_row.find_elements_by_tag_name('a')[0]
@@ -296,12 +375,7 @@ if __name__ =="__main__":
                                 time.sleep(2)
                                 print("second row click")
 
-                                mycursor = mydb.cursor()
-                                sql = "INSERT INTO case_type_data( case_types_id, parent_id, level, data) VALUES (%s,%s,%s,%s)"
-                                val = (data_id,parent_id,level,second_parent_row_html)
-                                mycursor.execute(sql, val)
-                                mydb.commit()
-                                second_parent_id = mycursor.lastrowid
+                                
                                 # parent_insert_counter = parent_insert_counter+1
                                 print("parent_insert => id => "+str(parent_id)+ " child => "+str(second_parent_id))
 
@@ -312,16 +386,17 @@ if __name__ =="__main__":
                                 third_output = driver.find_element_by_id('thirdpage')
                                 third_output_source_code = third_output.get_attribute("outerHTML")
                                 print(third_output_source_code)
-                                
+
+                                level = str(2)
                                 mycursor = mydb.cursor()
                                 sql = "INSERT INTO case_type_data( case_types_id, parent_id, level, data) VALUES (%s,%s,%s,%s)"
                                 val = (data_id,second_parent_id,level,third_output_source_code)
                                 mycursor.execute(sql, val)
                                 mydb.commit()
-                                second_parent_id = mycursor.lastrowid
+                                third_parent_id = mycursor.lastrowid
                                 
                                 # parent_insert_counter = parent_insert_counter+1
-                                print("parent_insert => id => "+str(parent_id)+ "second child => "+str(second_parent_id) +"third child => "+str(second_parent_id))
+                                print("parent_insert => id => "+str(parent_id)+ " second child => "+str(second_parent_id) +"third child => "+str(third_parent_id))
                                 print('--------> third page output')
                                 
                                 driver.execute_script("funBackBusiness()")

@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\CaseType;
-
+use App\CaseTypeDataGrid;
+use PHPHtmlParser\Dom;
 class CaseTypeController extends Controller
 {
     //
@@ -24,7 +25,7 @@ class CaseTypeController extends Controller
                     'year' => $request->year,
                     'status' => $request->status,
                     'case_type' => $request->case_type,
-                    
+
                 ]
             );
 
@@ -33,4 +34,13 @@ class CaseTypeController extends Controller
             return redirect()->back()->withErrors($exception->getMessage());
         }
     }
+
+    public function serviceRequest(){
+        $list = CaseTypeDataGrid::all();
+
+        return view('case_type.data',compact('list'));
+    }
+
+
+
 }

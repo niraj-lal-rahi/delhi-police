@@ -61,7 +61,9 @@ Route::get('search-data','IndexController@searchView')->name('search');
 Route::get('data/list/','IndexController@getRecord')->name('json.data');
 
 Route::prefix('case-type')->group(function(){
-    Route::get('','CaseTypeController@index');
+    Route::get('','CaseTypeController@index')->name('case-type');
+    Route::get('request','CaseTypeController@serviceRequest')->name('case-type-request');
     Route::post('','CaseTypeController@store');
+    Route::get('parse-dom','CaseTypeController@parseDom')->name('parse-dom');
 });
 

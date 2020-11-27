@@ -66,7 +66,6 @@
                         <span>Search By Date</span>
                     </a>
                 </li> --}}
-
                 <li>
                     <a href="{{ route('system-log') }}" class=" waves-effect">
                         <div class="d-inline-block icons-sm mr-1">
@@ -75,6 +74,27 @@
                             </span>
                         </div>
                         <span>System Log</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{{ route('case-type') }}" class=" waves-effect">
+                        <div class="d-inline-block icons-sm mr-1">
+                            <span class="uim-svg">
+                                <img src="{{ asset('/assets/images/icons/act.svg') }}" height="18px" alt="">
+                            </span>
+                        </div>
+                        <span>Case Type</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('case-type-request') }}" class=" waves-effect">
+                        <div class="d-inline-block icons-sm mr-1">
+                            <span class="uim-svg">
+                                <img src="{{ asset('/assets/images/icons/act.svg') }}" height="18px" alt="">
+                            </span>
+                        </div>
+                        <span>Case Type Data</span>
                     </a>
                 </li>
 
