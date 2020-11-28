@@ -63,7 +63,7 @@ if __name__ =="__main__":
 
         config = {
             'user': 'root',
-                'password': '12345',
+                'password': 'randompassword',
                     'unix_socket': '/var/run/mysqld/mysqld.sock',
                         'database': 'delhi_police',
                             'raise_on_warnings': True,
@@ -421,10 +421,20 @@ if __name__ =="__main__":
 
             parent_loop =  parent_loop+1
 
+        for m,link in enumerate(links) :
+            driver.get(link)
+            time.sleep(10)
+            driver.execute_script('window.print();')
+            time.sleep(5)
+            new_name = link.split('filename=')[1].split('/')[3].split('&')[0].strip()
+            os.rename('display_pdf.pdf',new_name)
+            time.sleep(3)
+            print('Documents completed'+str(m+1))
+            if m == len(links)-1:
+                mydb.close()
+                driver.quit
+                sys.exit()
 
-        mydb.close()
-        driver.quit
-        sys.exit()
 
     except Exception as err:
         print('ERROR: %sn' % str(err))

@@ -48,6 +48,8 @@
                         <thead>
                             <tr >
                                 <th style="font-weight:bold;" width="5%">Sr No</th>
+                                <th style="font-weight:bold;text-align:left;" >Fir Number</th>
+                                <th style="font-weight:bold;text-align:center;">Police Station</th>
                                 <th style="font-weight:bold;text-align:left;" >Case Number</th>
                                 <th style="font-weight:bold;text-align:center;">Petitioner Name</th>
                                 <th style="font-weight:bold;text-align:center;">Last Hearing Date</th>
@@ -61,6 +63,8 @@
                             @foreach ($list as $key => $lists )
                                 <tr>
                                     <td>{{ $key+1 }}</td>
+                                    <td>{{ $lists->fir_number}}</td>
+                                    <td>{{ $lists->police_station }}</td>
                                     <td>{{ $lists->case_number}}</td>
                                     <td>{{ $lists->party_name }}</td>
                                     <td>{!! $lists->last_hearing_date !!}</td>
