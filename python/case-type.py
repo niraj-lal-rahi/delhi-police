@@ -74,7 +74,7 @@ if __name__ =="__main__":
 
         mycursor = mydb.cursor(buffered=True)
 
-        sqlSelect = "SELECT * FROM case_types WHERE scrap_status='0' and id=1"
+        sqlSelect = "SELECT * FROM case_types WHERE scrap_status='0'"
         mycursor.execute(sqlSelect)
 
         myresult = mycursor.fetchone()
@@ -380,9 +380,12 @@ if __name__ =="__main__":
 
                             # print(second_parent_row_html)
 
-                            second_parent_link = second_parent_row.find_elements_by_tag_name('a')[0]
+                            second_parent_link = second_parent_row.find_elements_by_tag_name('a')
 
-                            second_parent_attribute = second_parent_link.get_attribute("onclick")
+                            second_parent_attribute = ""
+                            if(len(second_parent_link) > 0) :
+
+                                second_parent_attribute = second_parent_link[0].get_attribute("onclick")
 
                             if(second_parent_attribute) :
 
