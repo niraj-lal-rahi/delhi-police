@@ -18,13 +18,13 @@
         <div class="page-title-box">
             <div class="container-fluid">
                 <div class="row align-items-center">
-                    <div class="col-md-8">
+                    {{-- <div class="col-md-8">
                         <h4 class="page-title mb-1">Case Type  Requests:</h4>
                         <ol class="breadcrumb m-0">
                             <li class="breadcrumb-item"><a href="javascript: void(0);">Case Type</a></li>
                         <li class="breadcrumb-item active">Requests</li>
                         </ol>
-                    </div>
+                    </div> --}}
 
                 </div>
 
@@ -48,7 +48,7 @@
                         <thead>
                             <tr >
                                 <th style="font-weight:bold;" width="5%">Sr No</th>
-                                <th style="font-weight:bold;text-align:left;" >Fir Number</th>
+                                <th style="font-weight:bold;text-align:left;" >FIR Number</th>
                                 <th style="font-weight:bold;text-align:center;">Police Station</th>
                                 <th style="font-weight:bold;text-align:left;" >Case Number</th>
                                 <th style="font-weight:bold;text-align:center;">Petitioner Name</th>
@@ -56,6 +56,7 @@
                                 <th style="font-weight:bold;text-align:center;" >Next Hearing Date</th>
                                 <th style="font-weight:bold;text-align:center;" >Judge</th>
                                 <th style="font-weight:bold;text-align:center;" >Court</th>
+                                <th style="font-weight:bold;text-align:center;" >Acts</th>
                                 <th style="font-weight:bold;text-align:center;" >Actions</th>
                             </tr>
                         </thead>
@@ -71,6 +72,13 @@
                                     <td>{{ Str::replaceArray(':', [''],$lists->nxt_hearing_date) }}</td>
                                     <td>{!! Str::replaceArray(':', [''],$lists->judge) !!}</td>
                                     <td>North Delhi</td>
+                                    <td>
+                                        @if(count($lists->acts))
+                                            @foreach($lists->acts as $key => $value)
+                                                {{ $value->act }} <br/>
+                                            @endforeach
+                                        @endif
+                                    </td>
                                     <td><a href="{{ route('case-type.second-page',['id' => $lists->case_type_parents]) }}"> View </a></td>
 
                                 </tr>

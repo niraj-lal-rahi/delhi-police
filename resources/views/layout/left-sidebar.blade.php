@@ -7,7 +7,7 @@
         <div id="sidebar-menu">
             <!-- Left Menu Start -->
             <ul class="metismenu list-unstyled" id="side-menu">
-                <li class="menu-title">Menu</li>
+                {{-- <li class="menu-title">Menu</li> --}}
 
                 {{-- <li>
                     <a href="{{ url('/') }}" class="waves-effect">
@@ -99,7 +99,7 @@
                                 <img src="{{ asset('/assets/images/icons/act.svg') }}" height="18px" alt="">
                             </span>
                         </div>
-                        <span>Court Data</span>
+                        <span>Dashboard</span>
                     </a>
                 </li>
 
