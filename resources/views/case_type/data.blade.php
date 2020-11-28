@@ -54,6 +54,7 @@
                                 <th style="font-weight:bold;text-align:center;" >Next Hearing Date</th>
                                 <th style="font-weight:bold;text-align:center;" >Judge</th>
                                 <th style="font-weight:bold;text-align:center;" >Court</th>
+                                <th style="font-weight:bold;text-align:center;" >Actions</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -66,6 +67,7 @@
                                     <td>{{ $lists->nxt_hearing_date }}</td>
                                     <td>{!! $lists->judge !!}</td>
                                     <td>North Delhi</td>
+                                    <td><a href="{{ route('case-type.second-page',['id' => $lists->case_type_parents]) }}"> View </a></td>
 
                                 </tr>
                             @endforeach

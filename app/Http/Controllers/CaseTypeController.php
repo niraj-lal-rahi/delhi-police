@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\CaseType;
+use App\CaseTypeData;
 use App\CaseTypeDataGrid;
 use PHPHtmlParser\Dom;
 class CaseTypeController extends Controller
@@ -39,6 +40,23 @@ class CaseTypeController extends Controller
         $list = CaseTypeDataGrid::all();
 
         return view('case_type.data',compact('list'));
+    }
+
+    public function  getSecondPage($id){
+        $caseTypeData = new CaseTypeData;
+
+        $data = $caseTypeData->where('parent_id',$id)->where('level','1')->first();
+        return view('case_type.second-page',compact('data'));
+    }
+
+    public function  getThirdPage($parent,$row){
+
+
+        $caseTypeData = new CaseTypeData;
+
+        $data = $caseTypeData->where('parent_id',$parent)->orderBy('id','asc')->get();
+
+        return view('case_type.third-page',compact('data','row'));
     }
 
 

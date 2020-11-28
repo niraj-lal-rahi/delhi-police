@@ -64,6 +64,8 @@ Route::prefix('case-type')->group(function(){
     Route::get('','CaseTypeController@index')->name('case-type');
     Route::get('request','CaseTypeController@serviceRequest')->name('case-type-request');
     Route::post('','CaseTypeController@store');
-    Route::get('parse-dom','CaseTypeController@parseDom')->name('parse-dom');
+    // Route::get('parse-dom','CaseTypeController@parseDom')->name('parse-dom');
+    Route::get('second-page/{id}','CaseTypeController@getSecondPage')->name('case-type.second-page');
+    Route::get('third-page/{parent}/{row}','CaseTypeController@getThirdPage')->name('case-type.third-page');
 });
 

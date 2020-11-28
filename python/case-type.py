@@ -74,14 +74,14 @@ if __name__ =="__main__":
 
         mycursor = mydb.cursor(buffered=True)
 
-        sqlSelect = "SELECT * FROM case_types WHERE scrap_status='0'"
+        sqlSelect = "SELECT * FROM case_types WHERE scrap_status='0' and id=1"
         mycursor.execute(sqlSelect)
 
         myresult = mycursor.fetchone()
-        
+
         print(myresult)
         print("Begin")
-        
+
         #define variable from api
         data_id = str(myresult[0])
         site_url = myresult[1]
@@ -90,13 +90,13 @@ if __name__ =="__main__":
         case_type = myresult[4] #ARB. A. (COMM.) - COMMERCIAL ARBITRATION UNDER SECTION 37 (2)
         year = myresult[5]
         status = myresult[6] # 0 for pending and 1 for disposed
-        
+
 
         district_code = site_url[-1]
 
         print("district_code "+str(district_code))
-        
-        
+
+
         #Chrome settings
         settings = {
         "recentDestinations": [{
@@ -140,7 +140,7 @@ if __name__ =="__main__":
         #year
         driver.find_element_by_id('search_year').send_keys(year)
 
-        if(status == '1') :
+        if(status == '0') :
             driver.find_element_by_id('radP').click()
         else :
             driver.find_element_by_id('radD').click()
@@ -192,35 +192,33 @@ if __name__ =="__main__":
                     break
 
 
-        parent_id = level = str(0)        
+        parent_id = level = str(0)
         output = driver.find_element_by_id('showList')
         parent_source_code = output.get_attribute("outerHTML")
 
-       
-        
+
+
         # print("response")
         # print(parent_source_code)
 
         parent_insert_counter = 1
-        
+
         links = []
 
         first_page_table =  output.find_element_by_id('showList1')
-        
+
         parent_loop = 0
         for parent_row in first_page_table.find_elements_by_tag_name('tr') :
-            
-            
+
+
             if parent_loop > 0 :
-                
+
                 sr_no = parent_row.find_elements_by_tag_name("td")[0].text
                 case = parent_row.find_elements_by_tag_name("td")[1].text
                 petitioner = parent_row.find_elements_by_tag_name("td")[2].text
-                
+
                 print(str(data_id) + "=> "+str(sr_no) + "=> "+str(case) + "=> "+str(petitioner))
-                # mydb.close()
-                # driver.quit
-                # sys.exit()   
+
                 mycursor = mydb.cursor()
                 SQL = "INSERT INTO case_type_parents( case_types_id, s_no, case_type, petitioner_name) VALUES('"+str(data_id) + "','"+str(sr_no) + "','"+str(case) + "','"+str(petitioner)+"')"
 
@@ -235,27 +233,27 @@ if __name__ =="__main__":
 
                 parent_id = mycursor.lastrowid
                 print("parent_insert => id => "+str(parent_id))
-               
-            
+
+
                 parent_html = parent_row.get_attribute("outerHTML")
 
                 # print(parent_html)
                 # parent_row.find_elements_by_tag_name("td")[0]
-                
+
                 parent_link = parent_row.find_elements_by_tag_name('a')[0]
 
                 parent_attribute = parent_link.get_attribute("onclick")
-                
+
                 if(parent_attribute) :
 
                     print("insert parent")
-                    
-                    
+
+
                     print("data_id "+data_id)
                     # sql = '''INSERT INTO case_type_data( case_types_id, parent_id, level, data) string.replace(old, new, count)
                     #         VALUES (data_id,parent_id,level,parent_html)'''
-                    
-                    
+
+
                     driver.execute_script(str(parent_attribute))
                     print("first row click")
                     time.sleep(5)
@@ -276,8 +274,21 @@ if __name__ =="__main__":
                     # print("second table ")
                     # print(second_output_source_code)
 
+                    # get fir details
+                    police_station = ""
+                    fir_number = ""
+                    try :
+
+                        print("police station enter")
+                        police_station = second_output.find_element_by_xpath("//span[text() = 'Police Station']/following-sibling::label").text
+                        fir_number = second_output.find_element_by_xpath("//span[text() = 'FIR Number']/following-sibling::label").text
+
+                        print("get_fir_detail --------> "+str(police_station) + " "+str(fir_number))
+                    except AttributeError as attrErr:
+                        print("attribute exception for the police station")
+
                     case_status = second_output.find_element_by_xpath("//h2[text() = 'Case Status']/following-sibling::div")
-                    
+
                     label_count = len(case_status.find_elements_by_tag_name("label"))
                     first_label = case_status.find_elements_by_tag_name("label")[0]
                     second_label = case_status.find_elements_by_tag_name("label")[1]
@@ -286,47 +297,47 @@ if __name__ =="__main__":
 
                     hearing_date = first_label.find_elements_by_tag_name("strong")[1].text
                     next_hearing = second_label.find_elements_by_tag_name("strong")[1].text
-                    # stage_case = third_label.find_elements_by_tag_name("strong")[1].text 
+                    # stage_case = third_label.find_elements_by_tag_name("strong")[1].text
                     court_judge = fourth_label.find_elements_by_tag_name("strong")[1].text
-                    
+
                     print(str(hearing_date) +" hearing =="+ str(next_hearing) + " next hearing == "  +str(court_judge) + "count  == "+str(label_count))
-                    
+
 
                     # insert grid filter data
                     mycursor = mydb.cursor()
-                    grid_insert_query = "INSERT INTO case_type_data_grids( case_types_id, case_type_parents, case_number, party_name, last_hearing_date, nxt_hearing_date, judge, court_district) VALUES (%s,%s,%s,%s,%s,%s,%s,%s)" 
-                    
+                    grid_insert_query = "INSERT INTO case_type_data_grids( fir_number,police_station,case_types_id, case_type_parents, case_number, party_name, last_hearing_date, nxt_hearing_date, judge, court_district) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"
+
                     print("grid insert query pass")
-                    
-                    grid_val = (str(data_id),str(parent_id),str(case),str(petitioner),str(hearing_date),str(next_hearing),str(court_judge),str(district_code))
-                    
+
+                    grid_val = (str(fir_number),str(police_station),str(data_id),str(parent_id),str(case),str(petitioner),str(hearing_date),str(next_hearing),str(court_judge),str(district_code))
+
                     print("grid insert val pass")
-                    
+
                     mycursor.execute(grid_insert_query, grid_val)
-                    
+
                     print("grid db insertion pass")
-                    
+
                     mydb.commit()
 
                     grid_id = mycursor.lastrowid
 
                     print("grid db insertion pass last id "+str(grid_id))
-                    # Act data 
-                    try: 
+                    # Act data
+                    try:
                         act_table = second_output.find_elements_by_class_name("Acts_table")
 
-                        if len(act_table) > 0 : 
+                        if len(act_table) > 0 :
 
                             print("enter into act table")
                             act_iteration = 0
-                            for act_table_row in act_table[0].find_elements_by_tag_name('tr') : 
-                                
+                            for act_table_row in act_table[0].find_elements_by_tag_name('tr') :
+
                                 if act_iteration > 0 :
                                     get_column = act_table_row.find_elements_by_tag_name('td')
                                     print("act find td successfull")
                                     act_value = get_column[0].text
                                     section_value = get_column[1].text
-                                    
+
                                     # insert act and section
                                     mycursor = mydb.cursor()
                                     insert_act = "INSERT INTO case_type_act_sections(case_type_data_grids_id, act, sections) VALUES (%s,%s,%s)"
@@ -336,56 +347,57 @@ if __name__ =="__main__":
                                     print("act insertion pass")
                                     mydb.commit()
                                 act_iteration = act_iteration+1
-                    except AttributeError as attrErr: 
-                        print("There is no such attribute Exception") 
+                    except AttributeError as attrErr:
+                        print("Act attribute exception")
                     # act table end here
 
-                    print(case_status.get_attribute("outerHTML"))
+                    # print(case_status.get_attribute("outerHTML"))
 
                     # print(second_table.get_attribute("outerHTML"))
-                    print("second table ")
+                    print("history table start ")
                     second_table_loop = 0
-                    
+
                     second_table = second_output.find_element_by_xpath(("//table[@class='history_table']"))
-                    
+
                     soup = bs4.BeautifulSoup(driver.page_source,'html.parser')
                     elems  = soup.select('a[target="_blank"]')
-                    
-                    for elem in elems:
-                        link = 'https://services.ecourts.gov.in/ecourtindia_v4_bilingual/cases/' + elem['href']
-                        links.append(link)
+
+                    if len(elems) > 0 :
+                        for elem in elems:
+                            link = 'https://services.ecourts.gov.in/ecourtindia_v4_bilingual/cases/' + elem['href']
+                            links.append(link)
 
                     for second_parent_row in second_table.find_elements_by_tag_name('tr') :
-                        
+
                         if second_table_loop > 0 :
-                            
+
                             print("second table tr loop")
-                            
+
                             level = str(1)
                             second_parent_row_html = second_parent_row.get_attribute("outerHTML")
 
-                            print(second_parent_row_html)
+                            # print(second_parent_row_html)
 
                             second_parent_link = second_parent_row.find_elements_by_tag_name('a')[0]
 
                             second_parent_attribute = second_parent_link.get_attribute("onclick")
-                            
+
                             if(second_parent_attribute) :
 
                                 time.sleep(2)
                                 print("second row click")
 
-                                
+
                                 # parent_insert_counter = parent_insert_counter+1
                                 print("parent_insert => id => "+str(parent_id)+ " child => "+str(second_parent_id))
 
                                 driver.execute_script(str(second_parent_attribute))
-                                
+
                                 time.sleep(3)
-                                
+
                                 third_output = driver.find_element_by_id('thirdpage')
                                 third_output_source_code = third_output.get_attribute("outerHTML")
-                                print(third_output_source_code)
+                                # print(third_output_source_code)
 
                                 level = str(2)
                                 mycursor = mydb.cursor()
@@ -394,25 +406,25 @@ if __name__ =="__main__":
                                 mycursor.execute(sql, val)
                                 mydb.commit()
                                 third_parent_id = mycursor.lastrowid
-                                
+
                                 # parent_insert_counter = parent_insert_counter+1
                                 print("parent_insert => id => "+str(parent_id)+ " second child => "+str(second_parent_id) +"third child => "+str(third_parent_id))
                                 print('--------> third page output')
-                                
+
                                 driver.execute_script("funBackBusiness()")
 
 
-                            driver.execute_script("funBackBusiness()") 
-                        second_table_loop = second_table_loop+1  
+                            driver.execute_script("funBackBusiness()")
+                        second_table_loop = second_table_loop+1
 
                 driver.execute_script("funBack()")
 
             parent_loop =  parent_loop+1
 
-            
+
         mydb.close()
         driver.quit
-        sys.exit()        
+        sys.exit()
 
     except Exception as err:
         print('ERROR: %sn' % str(err))
