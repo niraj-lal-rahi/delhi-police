@@ -15,8 +15,8 @@
                         <span>Dashboard</span>
                     </a>
                 </li> --}}
-
-                <li>
+                {{-- active links hide @28 Nov --}}
+                {{-- <li>
                     <a href="{{ url('/') }}" class=" waves-effect">
                         <div class="d-inline-block icons-sm mr-1">
                             <i class="uim uim-briefcase"></i></div>
@@ -44,7 +44,8 @@
                         </div>
                         <span>Global Search</span>
                     </a>
-                </li>
+                </li> --}}
+                {{-- active links hide end here @28 Nov --}}
                 {{--<li>
                     <a href="{{ url('pdf-content') }}" class=" waves-effect">
                         <div class="d-inline-block icons-sm mr-1">
@@ -66,7 +67,9 @@
                         <span>Search By Date</span>
                     </a>
                 </li> --}}
-                <li>
+
+                {{-- active links hide @28 Nov --}}
+                {{-- <li>
                     <a href="{{ route('system-log') }}" class=" waves-effect">
                         <div class="d-inline-block icons-sm mr-1">
                             <span class="uim-svg">
@@ -86,7 +89,9 @@
                         </div>
                         <span>Case Type</span>
                     </a>
-                </li>
+                </li> --}}
+
+                {{-- active links hide end here @28 Nov --}}
                 <li>
                     <a href="{{ route('case-type-request') }}" class=" waves-effect">
                         <div class="d-inline-block icons-sm mr-1">
@@ -94,7 +99,7 @@
                                 <img src="{{ asset('/assets/images/icons/act.svg') }}" height="18px" alt="">
                             </span>
                         </div>
-                        <span>Case Type Data</span>
+                        <span>Court Data</span>
                     </a>
                 </li>
 

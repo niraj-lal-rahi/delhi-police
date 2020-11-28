@@ -118,6 +118,8 @@ if __name__ =="__main__":
         driver = webdriver.Chrome(options=options)
         driver.implicitly_wait(30)
         driver.maximize_window()
+        driver.set_window_size(1200, 600)
+
         print('Lets start')
         driver.get(site_url)
         WebDriverWait(driver, 10).until(lambda d: d.execute_script('return document.readyState') == 'complete')

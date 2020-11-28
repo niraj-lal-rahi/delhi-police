@@ -14,6 +14,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
+
+    return redirect()->route('case-type-request');
     $courtList = \App\CourtList::get();
     return view('welcome',compact('courtList'));
 });

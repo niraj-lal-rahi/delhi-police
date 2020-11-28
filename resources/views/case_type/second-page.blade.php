@@ -53,6 +53,7 @@
     </div>
 <!-- end col -->
 </div>
+
 <!-- end row -->
 @section('script')
 <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
@@ -70,7 +71,15 @@ $(document).ready(function(){
         var date_html =  "<a href='"+third_url+"' target='_blank'>"+$(this).html()+"</a>";
         $(this).parent().html(date_html);
 
-    })
+    });
+
+    $('#historyheading').hide();
+    var table_content = $("table.history_table").html();
+    var heading = '<thead><tr><th colspan="5"><h2 class="h2class" style="text-align: center;" >History of Case Hearing</h2></th></tr></thead>';
+    $("table.history_table").html(heading+table_content);
+
+
+
 
 });
 

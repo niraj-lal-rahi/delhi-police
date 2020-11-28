@@ -63,13 +63,13 @@
                             @foreach ($list as $key => $lists )
                                 <tr>
                                     <td>{{ $key+1 }}</td>
-                                    <td>{{ $lists->fir_number}}</td>
-                                    <td>{{ $lists->police_station }}</td>
-                                    <td>{{ $lists->case_number}}</td>
-                                    <td>{{ $lists->party_name }}</td>
-                                    <td>{!! $lists->last_hearing_date !!}</td>
-                                    <td>{{ $lists->nxt_hearing_date }}</td>
-                                    <td>{!! $lists->judge !!}</td>
+                                    <td>{{ Str::replaceArray(':', [''], $lists->fir_number)}}</td>
+                                    <td>{{ Str::replaceArray(':', [''],$lists->police_station) }}</td>
+                                    <td>{{ Str::replaceArray(':', [''],$lists->case_number)}}</td>
+                                    <td>{{ Str::replaceArray(':', [''],$lists->party_name) }}</td>
+                                    <td>{!! Str::replaceArray(':', [''],$lists->last_hearing_date) !!}</td>
+                                    <td>{{ Str::replaceArray(':', [''],$lists->nxt_hearing_date) }}</td>
+                                    <td>{!! Str::replaceArray(':', [''],$lists->judge) !!}</td>
                                     <td>North Delhi</td>
                                     <td><a href="{{ route('case-type.second-page',['id' => $lists->case_type_parents]) }}"> View </a></td>
 
