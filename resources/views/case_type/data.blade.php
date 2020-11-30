@@ -55,7 +55,7 @@
                                 <th style="font-weight:bold;text-align:center;">Last Hearing Date</th>
                                 <th style="font-weight:bold;text-align:center;" >Next Hearing Date</th>
                                 <th style="font-weight:bold;text-align:center;" >Judge</th>
-                                <th style="font-weight:bold;text-align:center;" >Court</th>
+                                <th style="font-weight:bold;text-align:center;" >Section(s)</th>
                                 <th style="font-weight:bold;text-align:center;" >Acts</th>
                                 <th style="font-weight:bold;text-align:center;" >Actions</th>
                             </tr>
@@ -71,7 +71,13 @@
                                     <td>{!! Str::replaceArray(':', [''],$lists->last_hearing_date) !!}</td>
                                     <td>{{ Str::replaceArray(':', [''],$lists->nxt_hearing_date) }}</td>
                                     <td>{!! Str::replaceArray(':', [''],$lists->judge) !!}</td>
-                                    <td>North Delhi</td>
+                                    <td>
+                                        @if(count($lists->acts))
+                                            @foreach($lists->acts as $key => $value)
+                                                {{ $value->sections }} <br/>
+                                            @endforeach
+                                        @endif
+                                    </td>
                                     <td>
                                         @if(count($lists->acts))
                                             @foreach($lists->acts as $key => $value)
