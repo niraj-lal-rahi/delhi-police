@@ -55,7 +55,7 @@
                                 <th style="font-weight:bold;text-align:center;">Last Hearing Date</th>
                                 <th style="font-weight:bold;text-align:center;" >Next Hearing Date</th>
                                 <th style="font-weight:bold;text-align:center;" >Judge</th>
-                                <th style="font-weight:bold;text-align:center;display: block;
+                                <th style="font-weight:bold;text-align:center;
                                 word-wrap: break-word !important;width:100px"  >Section(s)</th>
                                 <th style="font-weight:bold;text-align:center;" >Acts</th>
                                 <th style="font-weight:bold;text-align:center;" >Actions</th>
