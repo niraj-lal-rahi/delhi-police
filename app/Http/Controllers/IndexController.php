@@ -324,6 +324,9 @@ class IndexController extends Controller
             $nameArray = explode('/',$request->filename);
             $filename = $nameArray[count($nameArray)-1];
 
+            //overwrite filename to onefile only for now
+            $filename = "display_pdf.pdf";
+
             $checkExist = \Storage::disk('public')->exists($filename);
 
             if($checkExist){

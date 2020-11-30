@@ -78,7 +78,15 @@ $(document).ready(function(){
     var heading = '<thead><tr><th colspan="5"><h2 class="h2class" style="text-align: center;" >History of Case Hearing</h2></th></tr></thead>';
     $("table.history_table").html(heading+table_content);
 
+    var new_url = "{{ route('display') }}";
+    $.each($("table.order_table tr td:nth-child(3) a"),function(){
+        console.log($(this).attr("href"));
+        let old_link = $(this).attr("href");
+        let new_link = old_link.replace("display_pdf.php",new_url);
+        $(this).attr("href",new_link);
 
+
+    })
 
 
 });
