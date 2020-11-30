@@ -59,6 +59,10 @@ class CaseTypeController extends Controller
         return view('case_type.third-page',compact('data','row'));
     }
 
+    public function search(){
+        return view('case_type.search');
+    }
+
 
 
 }

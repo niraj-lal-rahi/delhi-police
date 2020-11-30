@@ -102,6 +102,16 @@
                         <span>Dashboard</span>
                     </a>
                 </li>
+                <li>
+                    <a href="{{ route('case-type.search') }}" class=" waves-effect">
+                        <div class="d-inline-block icons-sm mr-1">
+                            <span class="uim-svg">
+                                <img src="{{ asset('/assets/images/icons/act.svg') }}" height="18px" alt="">
+                            </span>
+                        </div>
+                        <span>Retrieval System</span>
+                    </a>
+                </li>
 
                 {{-- <li>
                     <a href="#" class=" waves-effect">
