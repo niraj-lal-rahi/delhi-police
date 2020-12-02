@@ -79,6 +79,9 @@ Route::prefix('case-type')->group(function(){
 Route::get('analytics', function () {
     return view('pages.analytics');
 })->name('analytics');
+Route::get('analytics-court', function () {
+    return view('pages.analytics');
+})->name('analytics-courts');
 /**
  * Acts route
  */

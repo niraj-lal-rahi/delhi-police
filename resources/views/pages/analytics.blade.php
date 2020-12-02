@@ -13,10 +13,10 @@
             <div class="container-fluid">
                 <div class="row align-items-center">
                     <div class="col-md-8">
-                        <h4 class="page-title mb-1">Acts</h4>
+                        <h4 class="page-title mb-1">Analytics</h4>
                         <ol class="breadcrumb m-0">
-                            <li class="breadcrumb-item"><a href="javascript: void(0);">Home</a></li>
-                        <li class="breadcrumb-item active">Acts</li>
+                            <li class="breadcrumb-item"><a href="javascript: void(0);">Analytics</a></li>
+                        <li class="breadcrumb-item active">District</li>
                         </ol>
                     </div>
                     <div class="col-md-4">
@@ -59,27 +59,479 @@
                                 </div>
                                 @endif
 
-                                <ol>
-                                    <li>Delhi Police Act, 1978</li>
-                                    <li>Central Motor Vehicles Act, 1988</li>
-                                    <li>Dowry Prohibition Act, 1961</li>
-                                    <li>Indian Penal Code, 1860</li>
-                                    <li>Code of Criminal procedure, 1973</li>
-                                    <li>Indian Evidence Act, 1872</li>
-                                    <li>Arms Act, 1959</li>
-                                    <li>Protection of Women from Domestic Violence Act, 2005</li>
-                                    <li>Copyright Act, 1957</li>
-                                    <li>Trade Mark Act, 1999</li>
-                                    <li>Protection of Civil Rights Act, 1955</li>
-                                    <li>Narcotics Drug and Psychotropic Substance Act, 1985</li>
-                                    <li>Public Gambling Act, 1867</li>
-                                    <li>Scheduled Castes and Scheduled Tribes (Prevention of Atrocities) Act, 1989</li>
-                                    <li>Central Excise Act, 1985</li>
-                                    <li>Delhi Excise Act, 2009</li>
-                                    <li>Delhi Prevention of defacement of Property Act, 2007</li>
-                                    <li>Protection of Children from Sexual Offences Act, 2012</li>
-                                    <li>Real Estate Regulation and Development Authority Act, 2016</li>
-                                </ol>
+
+  <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+
+  <script>
+ google.load('visualization', '1', {packages: ['corechart']});
+google.setOnLoadCallback(drawMaterial);
+
+function drawMaterial() {
+       var data = google.visualization.arrayToDataTable([
+        ['Element', ''],
+ ['For Bail', 8],
+ ['Arguments', 2],
+ ['Miscellaneous appearance', 4],
+ ['Defence evidence', 2],
+ ['Arguments on charge', 8], // CSS-style declaration
+     ]);
+
+     var options = {
+       vAxis:{format:' #,###'}
+     };
+   var formatter = new google.visualization.NumberFormat(
+               {prefix: ' '}
+           );
+           formatter.format(data, 1);
+
+     var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
+     chart.draw(data, options);
+   }
+ </script>
+
+     <script>
+ google.load('visualization', '1', {packages: ['corechart']});
+google.setOnLoadCallback(drawMaterial);
+
+function drawMaterial() {
+       var data = google.visualization.arrayToDataTable([
+        ['Element', ''],
+ ['For Bail', 8],
+ ['Arguments', 2],
+ ['Miscellaneous appearance', 4],
+ ['Defence evidence', 2],
+ ['Arguments on charge', 8], // CSS-style declaration
+     ]);
+
+     var options = {
+       vAxis:{format:' #,###'}
+     };
+   var formatter = new google.visualization.NumberFormat(
+               {prefix: ' '}
+           );
+           formatter.format(data, 1);
+
+     var chart = new google.visualization.ColumnChart(document.getElementById('chart_div1'));
+     chart.draw(data, options);
+   }
+ </script>
+
+     <script>
+ google.load('visualization', '1', {packages: ['corechart']});
+google.setOnLoadCallback(drawMaterial);
+
+function drawMaterial() {
+       var data = google.visualization.arrayToDataTable([
+        ['Element', ''],
+ ['For Bail', 8],
+ ['Arguments', 2],
+ ['Miscellaneous appearance', 4],
+ ['Defence evidence', 2],
+ ['Arguments on charge', 8], // CSS-style declaration
+     ]);
+
+     var options = {
+       vAxis:{format:' #,###'}
+     };
+   var formatter = new google.visualization.NumberFormat(
+               {prefix: ' '}
+           );
+           formatter.format(data, 1);
+
+     var chart = new google.visualization.ColumnChart(document.getElementById('chart_div2'));
+     chart.draw(data, options);
+   }
+ </script>
+         <script>
+ google.load('visualization', '1', {packages: ['corechart']});
+google.setOnLoadCallback(drawMaterial);
+
+function drawMaterial() {
+       var data = google.visualization.arrayToDataTable([
+        ['Element', ''],
+ ['For Bail', 8],
+ ['Arguments', 2],
+ ['Miscellaneous appearance', 4],
+ ['Defence evidence', 2],
+ ['Arguments on charge', 8], // CSS-style declaration
+     ]);
+
+     var options = {
+       vAxis:{format:' #,###'}
+     };
+   var formatter = new google.visualization.NumberFormat(
+               {prefix: ' '}
+           );
+           formatter.format(data, 1);
+
+     var chart = new google.visualization.ColumnChart(document.getElementById('chart_div3'));
+     chart.draw(data, options);
+   }
+ </script>
+      <script>
+ google.load('visualization', '1', {packages: ['corechart']});
+google.setOnLoadCallback(drawMaterial);
+
+function drawMaterial() {
+       var data = google.visualization.arrayToDataTable([
+        ['Element', ''],
+ ['For Bail', 8],
+ ['Arguments', 2],
+ ['Miscellaneous appearance', 4],
+ ['Defence evidence', 2],
+ ['Arguments on charge', 8], // CSS-style declaration
+     ]);
+
+     var options = {
+       vAxis:{format:' #,###'}
+     };
+   var formatter = new google.visualization.NumberFormat(
+               {prefix: ' '}
+           );
+           formatter.format(data, 1);
+
+     var chart = new google.visualization.ColumnChart(document.getElementById('chart_div4'));
+     chart.draw(data, options);
+   }
+ </script>
+       <script>
+ google.load('visualization', '1', {packages: ['corechart']});
+google.setOnLoadCallback(drawMaterial);
+
+function drawMaterial() {
+       var data = google.visualization.arrayToDataTable([
+        ['Element', ''],
+ ['For Bail', 8],
+ ['Arguments', 2],
+ ['Miscellaneous appearance', 4],
+ ['Defence evidence', 2],
+ ['Arguments on charge', 8], // CSS-style declaration
+     ]);
+
+     var options = {
+       vAxis:{format:' #,###'}
+     };
+   var formatter = new google.visualization.NumberFormat(
+               {prefix: ' '}
+           );
+           formatter.format(data, 1);
+
+     var chart = new google.visualization.ColumnChart(document.getElementById('chart_div4'));
+     chart.draw(data, options);
+   }
+ </script>
+      <script>
+ google.load('visualization', '1', {packages: ['corechart']});
+google.setOnLoadCallback(drawMaterial);
+
+function drawMaterial() {
+       var data = google.visualization.arrayToDataTable([
+        ['Element', ''],
+ ['For Bail', 8],
+ ['Arguments', 2],
+ ['Miscellaneous appearance', 4],
+ ['Defence evidence', 2],
+ ['Arguments on charge', 8], // CSS-style declaration
+     ]);
+
+     var options = {
+       vAxis:{format:' #,###'}
+     };
+   var formatter = new google.visualization.NumberFormat(
+               {prefix: ' '}
+           );
+           formatter.format(data, 1);
+
+     var chart = new google.visualization.ColumnChart(document.getElementById('chart_div5'));
+     chart.draw(data, options);
+   }
+ </script>
+      <script>
+ google.load('visualization', '1', {packages: ['corechart']});
+google.setOnLoadCallback(drawMaterial);
+
+function drawMaterial() {
+       var data = google.visualization.arrayToDataTable([
+        ['Element', ''],
+ ['For Bail', 8],
+ ['Arguments', 2],
+ ['Miscellaneous appearance', 4],
+ ['Defence evidence', 2],
+ ['Arguments on charge', 8], // CSS-style declaration
+     ]);
+
+     var options = {
+       vAxis:{format:' #,###'}
+     };
+   var formatter = new google.visualization.NumberFormat(
+               {prefix: ' '}
+           );
+           formatter.format(data, 1);
+
+     var chart = new google.visualization.ColumnChart(document.getElementById('chart_div6'));
+     chart.draw(data, options);
+   }
+ </script>
+       <script>
+ google.load('visualization', '1', {packages: ['corechart']});
+google.setOnLoadCallback(drawMaterial);
+
+function drawMaterial() {
+       var data = google.visualization.arrayToDataTable([
+        ['Element', ''],
+ ['For Bail', 8],
+ ['Arguments', 2],
+ ['Miscellaneous appearance', 4],
+ ['Defence evidence', 2],
+ ['Arguments on charge', 8], // CSS-style declaration
+     ]);
+
+     var options = {
+       vAxis:{format:' #,###'}
+     };
+   var formatter = new google.visualization.NumberFormat(
+               {prefix: ' '}
+           );
+           formatter.format(data, 1);
+
+     var chart = new google.visualization.ColumnChart(document.getElementById('chart_div7'));
+     chart.draw(data, options);
+   }
+ </script>
+       <script>
+ google.load('visualization', '1', {packages: ['corechart']});
+google.setOnLoadCallback(drawMaterial);
+
+function drawMaterial() {
+       var data = google.visualization.arrayToDataTable([
+        ['Element', ''],
+ ['For Bail', 8],
+ ['Arguments', 2],
+ ['Miscellaneous appearance', 4],
+ ['Defence evidence', 2],
+ ['Arguments on charge', 8], // CSS-style declaration
+     ]);
+
+     var options = {
+       vAxis:{format:' #,###'}
+     };
+   var formatter = new google.visualization.NumberFormat(
+               {prefix: ' '}
+           );
+           formatter.format(data, 1);
+
+     var chart = new google.visualization.ColumnChart(document.getElementById('chart_div8'));
+     chart.draw(data, options);
+   }
+ </script>
+       <script>
+ google.load('visualization', '1', {packages: ['corechart']});
+google.setOnLoadCallback(drawMaterial);
+
+function drawMaterial() {
+       var data = google.visualization.arrayToDataTable([
+        ['Element', ''],
+ ['For Bail', 8],
+ ['Arguments', 2],
+ ['Miscellaneous appearance', 4],
+ ['Defence evidence', 2],
+ ['Arguments on charge', 8], // CSS-style declaration
+     ]);
+
+     var options = {
+       vAxis:{format:' #,###'}
+     };
+   var formatter = new google.visualization.NumberFormat(
+               {prefix: ' '}
+           );
+           formatter.format(data, 1);
+
+     var chart = new google.visualization.ColumnChart(document.getElementById('chart_div9'));
+     chart.draw(data, options);
+   }
+ </script>
+       <script>
+ google.load('visualization', '1', {packages: ['corechart']});
+google.setOnLoadCallback(drawMaterial);
+
+function drawMaterial() {
+       var data = google.visualization.arrayToDataTable([
+        ['Element', ''],
+ ['For Bail', 8],
+ ['Arguments', 2],
+ ['Miscellaneous appearance', 4],
+ ['Defence evidence', 2],
+ ['Arguments on charge', 8], // CSS-style declaration
+     ]);
+
+     var options = {
+       vAxis:{format:' #,###'}
+     };
+   var formatter = new google.visualization.NumberFormat(
+               {prefix: ' '}
+           );
+           formatter.format(data, 1);
+
+     var chart = new google.visualization.ColumnChart(document.getElementById('chart_div10'));
+     chart.draw(data, options);
+   }
+ </script>
+       <script>
+ google.load('visualization', '1', {packages: ['corechart']});
+google.setOnLoadCallback(drawMaterial);
+
+function drawMaterial() {
+       var data = google.visualization.arrayToDataTable([
+        ['Element', ''],
+ ['For Bail', 8],
+ ['Arguments', 2],
+ ['Miscellaneous appearance', 4],
+ ['Defence evidence', 2],
+ ['Arguments on charge', 8], // CSS-style declaration
+     ]);
+
+     var options = {
+       vAxis:{format:' #,###'}
+     };
+   var formatter = new google.visualization.NumberFormat(
+               {prefix: ' '}
+           );
+           formatter.format(data, 1);
+
+     var chart = new google.visualization.ColumnChart(document.getElementById('chart_div11'));
+     chart.draw(data, options);
+   }
+ </script>
+      <script>
+ google.load('visualization', '1', {packages: ['corechart']});
+google.setOnLoadCallback(drawMaterial);
+
+function drawMaterial() {
+       var data = google.visualization.arrayToDataTable([
+        ['Element', ''],
+ ['For Bail', 8],
+ ['Arguments', 2],
+ ['Miscellaneous appearance', 4],
+ ['Defence evidence', 2],
+ ['Arguments on charge', 8], // CSS-style declaration
+     ]);
+
+     var options = {
+       vAxis:{format:' #,###'}
+     };
+   var formatter = new google.visualization.NumberFormat(
+               {prefix: ' '}
+           );
+           formatter.format(data, 1);
+
+     var chart = new google.visualization.ColumnChart(document.getElementById('chart_div12'));
+     chart.draw(data, options);
+   }
+ </script>
+   <script>
+ google.load('visualization', '1', {packages: ['corechart']});
+google.setOnLoadCallback(drawMaterial);
+
+function drawMaterial() {
+       var data = google.visualization.arrayToDataTable([
+        ['Element', ''],
+ ['For Bail', 8],
+ ['Arguments', 2],
+ ['Miscellaneous appearance', 4],
+ ['Defence evidence', 2],
+ ['Arguments on charge', 8], // CSS-style declaration
+     ]);
+
+     var options = {
+       vAxis:{format:' #,###'}
+     };
+   var formatter = new google.visualization.NumberFormat(
+               {prefix: ' '}
+           );
+           formatter.format(data, 1);
+
+     var chart = new google.visualization.ColumnChart(document.getElementById('chart_div13'));
+     chart.draw(data, options);
+   }
+ </script>
+
+
+ <div class="row">
+ <div class="column" style="background-color:#fff;">
+   <h2>Central Delhi</h2>
+   <p><div id="chart_div"></div></p>
+ </div>
+ <div class="column" style="background-color:#fff;">
+   <h2>Delhi Family Court</h2>
+   <p><div id="chart_div1"></div></p>
+ </div>
+</div>
+
+ <div class="row">
+ <div class="column" style="background-color:#fff;">
+   <h2>Delhi Mediation Centre</h2>
+   <p><div id="chart_div2"></div></p>
+ </div>
+ <div class="column" style="background-color:#fff;">
+   <h2>Rouse Avenue Court Complex</h2>
+   <p><div id="chart_div3"></div></p>
+ </div>
+</div>
+
+ <div class="row">
+ <div class="column" style="background-color:#fff;">
+   <h2>East Delhi</h2>
+   <p><div id="chart_div4"></div></p>
+ </div>
+ <div class="column" style="background-color:#fff;">
+   <h2>New Delhi</h2>
+   <p><div id="chart_div5"></div></p>
+ </div>
+</div>
+
+ <div class="row">
+ <div class="column" style="background-color:#fff;">
+   <h2>North Delhi</h2>
+   <p><div id="chart_div6"></div></p>
+ </div>
+ <div class="column" style="background-color:#fff;">
+   <h2>North East Delhi</h2>
+   <p><div id="chart_div7"></div></p>
+ </div>
+</div>
+
+ <div class="row">
+ <div class="column" style="background-color:#fff;">
+   <h2>North West Delhi</h2>
+   <p><div id="chart_div8"></div></p>
+ </div>
+ <div class="column" style="background-color:#fff;">
+   <h2>Shahdara</h2>
+   <p><div id="chart_div9"></div></p>
+ </div>
+</div>
+
+ <div class="row">
+ <div class="column" style="background-color:#fff;">
+   <h2>South Delhi</h2>
+   <p><div id="chart_div10"></div></p>
+ </div>
+ <div class="column" style="background-color:#fff;">
+   <h2>South East Delhi</h2>
+   <p><div id="chart_div11"></div></p>
+ </div>
+</div>
+
+ <div class="row">
+ <div class="column" style="background-color:#fff;">
+   <h2>South West Delhi</h2>
+   <p><div id="chart_div12"></div></p>
+ </div>
+ <div class="column" style="background-color:#fff;">
+   <h2>West Delhi</h2>
+   <p><div id="chart_div13"></div></p>
+ </div>
+</div>
                             </div>
                         </div>
                     </div>
