@@ -44,7 +44,14 @@
                                     </div>
                                     @endif
                                 <div>
-
+                                <div class="tab-container" style="margin-bottom : 20px">
+                                    <button class="tablink" onclick="" id="defaultOpen">ChargeSheet</button>
+                                    <button class="tablink" onclick="">First Information Report (FIR)</button>
+                                    <button class="tablink" onclick="">Prosecution Witness Statement</button>
+                                    <button class="tablink" onclick="">Defence Witness Statement</button>
+                                </div>
+                                <br/>
+                                <br/>
                                 {!! $data->data !!}
 
                 </div>
@@ -53,7 +60,36 @@
     </div>
 <!-- end col -->
 </div>
+<style>
+    body {font-family: "Lato", sans-serif;}
 
+    .tablink {
+      background-color: #555;
+      color: white;
+      float: left;
+      font-size:13px;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      padding: 14px 16px;
+      width: 25%;
+    }
+
+    .tablink:hover {
+      background-color: #777;
+    }
+    #secondpage {
+        margin-top : 50px;
+    }
+
+    /* Style the tab content */
+    .tabcontent {
+      color: white;
+      display: none;
+      padding: 50px;
+      text-align: center;
+    }
+    </style>
 <!-- end row -->
 @section('script')
 <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>

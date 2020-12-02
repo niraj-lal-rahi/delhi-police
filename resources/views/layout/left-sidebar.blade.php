@@ -113,6 +113,41 @@
                     </a>
                 </li>
 
+                <li>
+                    <a href="{{ route('analytics') }}" class=" waves-effect">
+                        <div class="d-inline-block icons-sm mr-1">
+                            <span class="uim-svg">
+                                <img src="{{ asset('/assets/images/icons/act.svg') }}" height="18px" alt="">
+                            </span>
+                        </div>
+                        <span>Analytics</span>
+                    </a>
+                    <ul class="mm-collapse" style="height: 0px;">
+                        <li>
+                          <a href="#">
+                            <span class="fa fa-fw fa-code-fork"></span>
+                            District Wise
+                          </a>
+                        </li>
+                        <li>
+                          <a href="#">
+                            <span class="fa fa-fw fa-star"></span>
+                            Court Complex Wise
+                          </a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="{{ route('acts') }}" class=" waves-effect">
+                        <div class="d-inline-block icons-sm mr-1">
+                            <span class="uim-svg">
+                                <img src="{{ asset('/assets/images/icons/act.svg') }}" height="18px" alt="">
+                            </span>
+                        </div>
+                        <span>Acts</span>
+                    </a>
+                </li>
+
                 {{-- <li>
                     <a href="#" class=" waves-effect">
                         <div class="d-inline-block icons-sm mr-1">

@@ -72,3 +72,16 @@ Route::prefix('case-type')->group(function(){
     Route::get('search','CaseTypeController@search')->name('case-type.search');
 });
 
+/**
+ * Analytics route
+ */
+
+Route::get('analytics', function () {
+    return view('pages.analytics');
+})->name('analytics');
+/**
+ * Acts route
+ */
+Route::get('acts', function () {
+    return view('pages.analytics');
+})->name('acts');
